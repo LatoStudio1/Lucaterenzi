@@ -10,7 +10,7 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
@@ -25,7 +25,7 @@ a{color:inherit}a:hover{color:#aaa}
 
 <div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
   <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Luca Terenzi</a>
-  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><a href="#" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a></sc-if>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><a href="#" onClick="{{ scrollBottom }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a></sc-if>
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><a href="#" onClick="{{ openMenu }}" style="color:#f4f4f4;text-decoration:none">Menu</a></sc-if>
 </div>
 
@@ -36,9 +36,9 @@ a{color:inherit}a:hover{color:#aaa}
     <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">Close</a>
   </div>
   <div style="display:flex;flex-direction:column;gap:6px;font-size:clamp(44px,15vw,88px);line-height:0.98">
-    <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">About me</a>
+    <a href="#" onClick="{{ menuTop }}" style="color:#f4f4f4;text-decoration:none">About me</a>
     <a href="#works" onClick="{{ menuWorks }}" style="color:#f4f4f4;text-decoration:none">Works</a>
-    <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">Contacts</a>
+    <a href="#" onClick="{{ menuBottom }}" style="color:#f4f4f4;text-decoration:none">Contacts</a>
   </div>
   <div style="font-size:18px;line-height:1;letter-spacing:-0.02em;color:#8a8a8a">Graphic Designer</div>
 </div>
@@ -46,16 +46,26 @@ a{color:inherit}a:hover{color:#aaa}
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#0b0b0b">
-  <div ref="{{ lanyardRef }}" style="position:absolute;inset:0;z-index:0;overflow:hidden"></div>
-  <div style="grid-column:1 / span 2;position:relative;z-index:1;pointer-events:none">
+  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;color:#f4f4f4;display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <div data-fadein="" style="opacity:0;transition:opacity 1.4s ease .5s;display:flex;flex-direction:column;align-items:center;font-size:min(17vw,34vh);line-height:0.92;white-space:nowrap;text-align:center">
+      <div data-scramble="" style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-0.035em">Welcome to my</div>
+      <div data-scramble="" style="font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-0.06em;font-size:0.9em">PORTFOLIO!</div>
+    </div>
+  </div>
+  <div data-fadein="" style="position:absolute;left:max(20px,calc(50% - min(41vw,540px)));bottom:7vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;opacity:0;transition:opacity 1.2s ease 2.6s;transform:rotate(6deg);transform-origin:left top;width:max-content">
+    <div style="font-size:clamp(20px,2.3vw,44px);line-height:1.02">turn it around<br>to find out more about me! :)</div>
+    <svg viewBox="0 0 150 110" style="display:block;margin:4px 0 0 clamp(40px,6vw,120px);width:clamp(80px,7vw,130px);overflow:visible" fill="none" stroke="#ff5a00" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10 C 18 52, 44 86, 82 84 C 108 82, 126 62, 138 30"></path><path d="M120 34 C 128 32, 134 28, 139 26 C 140 36, 142 44, 145 52"></path></svg>
+  </div>
+  <div ref="{{ lanyardRef }}" style="position:absolute;inset:0;z-index:1;overflow:hidden"></div>
+  <div style="grid-column:1 / span 2;position:relative;z-index:3;pointer-events:none">
     <a href="#" onClick="{{ goHome }}" style="display:block;color:#f4f4f4;text-decoration:none;pointer-events:auto;width:fit-content" data-scramble="">Luca Terenzi</a>
     <div style="color:#f4f4f4" data-scramble="">Graphic Designer</div>
   </div>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
-  <nav style="grid-column:4 / span 1;justify-self:end;display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;z-index:1">
-    <a href="#" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">About me</a>
+  <nav style="grid-column:4 / span 1;justify-self:end;display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;z-index:3">
+    <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">About me</a>
     <a href="#works" onClick="{{ scrollWorks }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Works</a>
-    <a href="#" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a>
+    <a href="#" onClick="{{ scrollBottom }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a>
   </nav>
   </sc-if>
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
@@ -153,6 +163,20 @@ a{color:inherit}a:hover{color:#aaa}
   </div>
 </main>
 </sc-if>
+<div ref="{{ footerRef }}" style="overflow:hidden;background:#0b0b0b">
+<footer data-screen-label="Footer" style="opacity:0;transform:translateY(60px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);background:#ff5a00;color:#000;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:20px;display:flex;flex-direction:column;gap:clamp(24px,3vw,60px);letter-spacing:-0.02em">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px 20px;font-size:clamp(14px,1.05vw,20px);line-height:1.15;max-width:60vw;min-width:min(100%,520px)">
+    <div style="display:flex;flex-direction:column;min-width:0"><div style="opacity:.45">Index</div><div>Works</div><div>Home</div></div>
+    <div style="display:flex;flex-direction:column;min-width:0"><div style="opacity:.45">Infos</div><div>Luca Terenzi</div><div>lucaterenzi00@gmail.com</div><div>City, Country</div><div>(+39) 000 000 0000</div></div>
+    <div style="display:flex;flex-direction:column;min-width:0"><div style="opacity:.45">Social</div><div>Linkedin</div><div>Instagram</div><div>Behance</div><div>Layers</div><div>YouTube</div></div>
+  </div>
+  <div style="display:flex;flex-direction:column;margin-top:clamp(24px,4vw,80px);font-weight:500;letter-spacing:-0.055em;line-height:0.9">
+    <div style="font-size:clamp(40px,8.6vw,260px)">Wanna keep in touch?</div>
+    <div style="font-size:clamp(28px,7.3vw,230px);opacity:.4;white-space:nowrap">lucaterenzi00@gmail.com</div>
+  </div>
+  <div style="font-size:clamp(14px,1.05vw,20px);line-height:1;letter-spacing:-0.01em;font-weight:400">© Luca Terenzi 2026</div>
+</footer>
+</div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 /*
@@ -189,17 +213,17 @@ const PROJECTS = [
       { video: '../projects/art-of-disobedience/gallery-04.mp4', span: 2, ratio: '1556/1980', natural: true, fit: 'cover' },
     ] },
   { slug: 'byld-studio', size: 'S', title: 'Byld Studio', tags: 'Co-founder', cover: '../projects/byld-studio/cover.png', bg: '#000', manifesto: true,
-    heroTitle: 'Byld Studio',
+    heroTitle: 'Byld Studio', heroBlank: true,
     intro: 'Co-founder of Byld Studio.', details: ['BYLD Studio is a Rome-based graphic design studio. We focus on a creative, authentic, and innovative communication, transforming ideas into unique projects that create value and identity.'], software: 'Adobe Illustrator, Photoshop, InDesign, Blender, Figma',
     // 4-column grid, two formats only: span 2 (half) or span 1 (quarter). Each row must sum to 4.
     gallery: [
-      { video: '../projects/byld-studio/gallery-1.mp4', span: 2, ratio: '4/5', tall: true },
-      { video: '../projects/byld-studio/gallery-2.mp4', span: 2, ratio: '4/5', tall: true },
-      { video: '../projects/byld-studio/gallery-4.mp4', span: 1, ratio: '9/16' },
-      { video: '../projects/byld-studio/gallery-5.mp4', span: 1, ratio: '9/16' },
-      { video: '../projects/byld-studio/gallery-3.mp4', span: 2, ratio: '4/5', fill: true }, // tall = same height as a 9:16 quarter tile, cropped & centered; fill = takes the row height of its neighbours, video cropped & centered
-      { video: '../projects/byld-studio/gallery-6.mp4', span: 1, ratio: '9/16' },
-      { video: '../projects/byld-studio/hero.mp4', span: 1, ratio: '9/16', bg: '#000', fit: 'contain', vscale: 0.6 },
+      { video: '../projects/byld-studio/gallery-1.mp4', span: 2, ratio: '4/5', tall: true, fit: 'cover' },
+      { video: '../projects/byld-studio/gallery-2.mp4', span: 2, ratio: '4/5', tall: true, fit: 'cover' },
+      { video: '../projects/byld-studio/gallery-4.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: '../projects/byld-studio/gallery-5.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: '../projects/byld-studio/gallery-3.mp4', span: 2, ratio: '4/5', fill: true, fit: 'cover' }, // tall = same height as a 9:16 quarter tile, cropped & centered; fill = takes the row height of its neighbours, video cropped & centered
+      { video: '../projects/byld-studio/gallery-6.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: '../projects/byld-studio/hero.mp4', span: 1, ratio: '9/16', fit: 'cover' },
     ] },
   { slug: 'lo-spettacolo-siamo-noi', size: 'S', title: 'Lo spettacolo siamo noi', tags: 'Motion Graphics', cover: '../projects/lo-spettacolo-siamo-noi/cover.png', bg: '#3a6f9a',
     heroVideo: '../projects/lo-spettacolo-siamo-noi/hero.mp4', heroRatio: '16/9',
@@ -255,6 +279,17 @@ const readHash = () => (window.__MULTI ? window.__VIEW : ((location.hash || '').
 const urlOf = (s) => s.replace(/-/g, '');
 
 class Component extends DCLogic {
+  footerRef = (el) => {
+    if (this._ftEl === el) return;
+    if (this._ftIO) { this._ftIO.disconnect(); this._ftIO = null; }
+    this._ftEl = el;
+    if (!el) return;
+    this._ftIO = new IntersectionObserver((en) => {
+      const on = en.some((x) => x.isIntersecting), f = el.firstElementChild;
+      f.style.opacity = on ? '1' : '0'; f.style.transform = on ? 'none' : 'translateY(60px)';
+    }, { threshold: 0.2 });
+    this._ftIO.observe(el);
+  };
   lanyardRef = (el) => {
     if (this._lanyEl === el) return;
     if (this._lany) { this._lany.destroy(); this._lany = null; }
@@ -265,16 +300,22 @@ class Component extends DCLogic {
     const face = async () => {
       try { await Promise.all([document.fonts.load("500 150px 'PP Neue Montreal'"), document.fonts.load("italic 400 300px 'Instrument Serif'")]); } catch (e) {}
       const c = document.createElement('canvas'); c.width = 1024; c.height = 1440;
-      const g = c.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, 1024, 1440); g.fillStyle = '#fff';
-      g.font = "500 150px 'PP Neue Montreal', Helvetica, Arial, sans-serif"; g.fillText('TEST', 80, 1000);
-      g.font = "italic 400 300px 'Instrument Serif', Georgia, serif"; g.fillText('Luca', 80, 1230);
-      g.font = "500 150px 'PP Neue Montreal', Helvetica, Arial, sans-serif"; g.fillText('PORTFOLIO', 80, 1370);
+      const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 1024, 1440); g.fillStyle = '#000';
+      const wrap = (t, w) => { const out = []; let line = ''; t.split(' ').forEach((wd) => { const x = line ? line + ' ' + wd : wd; if (g.measureText(x).width > w && line) { out.push(line); line = wd; } else line = x; }); if (line) out.push(line); return out; };
+      let y = 215;
+      g.font = "500 50px 'PP Neue Montreal', Helvetica, Arial, sans-serif";
+      ["My name is Luca, I'm 26 and I'm a graphic designer and art director from Rome.", "I'm passionate about brand identity, motion and anything that turns an idea into something people remember.", "Take a look around, and if you like what you see, let's make something together."].forEach((p) => { wrap(p, 864).forEach((l) => { g.fillText(l, 80, y); y += 60; }); y += 34; });
+      y += 30;
+      [['Education', 'Scuola Internazionale di Comics | 2023'], ['Awards', 'Winner for the 2022 Posterheroes edition']].forEach(([k, v]) => {
+        g.fillStyle = '#555'; g.font = "500 36px 'PP Neue Montreal', Helvetica, Arial, sans-serif"; g.fillText(k, 80, y); y += 50;
+        g.fillStyle = '#000'; g.font = "500 46px 'PP Neue Montreal', Helvetica, Arial, sans-serif"; wrap(v, 864).forEach((l) => { g.fillText(l, 80, y); y += 56; }); y += 36;
+      });
       return c.toDataURL('image/png');
     };
     Promise.all([import(abs('lanyard.js')), face()]).then(([m, front]) => {
       if (this._lanyEl !== el) return;
       this._lany = m.mountLanyard(el, {
-        frontImage: front, cardColor: '#000000', backImage: abs('../projects/foto-card.jpg'), cornerRadius: 0.35, size: 0.55, anchor: 'center', strapLength: 0.45,
+        frontImage: abs('../projects/foto-card.jpg'), cardColor: '#ffffff', backImage: front, cornerRadius: 0.35, size: 0.55, anchor: 'center', strapLength: 0.45,
         strapColor: '#ff5a00', strapWidth: 0.7, metal: 'silver', finish: 'glossy',
       });
     }).catch((e) => console.warn('lanyard', e));
@@ -407,7 +448,7 @@ class Component extends DCLogic {
         ...p,
         hasManifesto: !!p.manifesto,
         heroFilter: p.heroTitle ? 'brightness(0.6)' : 'none',
-        heroImage: p.heroVideo ? 'none' : url(p.hero || p.cover),
+        heroImage: (p.heroVideo || p.heroBlank) ? 'none' : url(p.hero || p.cover),
         heroRatio: p.heroRatio || '16/8',
         heroFit: p.heroFit || 'contain',
         bg: p.heroBg || (p.heroVideo ? '#000' : p.bg),
@@ -415,12 +456,16 @@ class Component extends DCLogic {
       gallery: (p.gallery && p.gallery.length ? p.gallery : [[2, 1], [2, 2], [1, 3], [1, 4], [2, 5]].map(([s, n]) => ({ img: '', span: s, ratio: n <= 2 ? '4/5' : '9/16', tall: n <= 2, fill: n === 5, label: `../projects/${p.slug}/gallery-${n}.png` }))).map(g => ({ label: '', video: '', bg: '#000', fit: 'contain', bgSize: 'contain', vscale: 1, ...g, height: gc === 4 && !g.natural ? `${Math.round((document.documentElement.clientWidth - 100) / 4 * 16 / 9)}px` : 'auto', align: 'start', ratio: gc === 4 && !g.natural ? 'auto' : g.ratio, span: gfit(g.span), bgImage: url(g.img) })),
       goHome: this.nav('home'),
       lanyardRef: this.lanyardRef,
+      footerRef: this.footerRef,
       mob: this.state.w < 700, desk: this.state.w >= 700, menuOpen: this.state.menuOpen && this.state.w < 700,
       openMenu: (e) => { e.preventDefault(); this.setState({ menuOpen: true }); },
       closeMenu: (e) => { e.preventDefault(); this.setState({ menuOpen: false }); },
       menuWorks: (e) => { e.preventDefault(); this.setState({ menuOpen: false }); setTimeout(() => { const m = document.getElementById('works'); if (m) window.scrollTo({ top: m.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' }); }, 50); },
       navY: (i >= 0 || this.state.navOn) ? '0' : '-100%',
       toTop: (e) => { if (i >= 0) return this.nav('home')(e); e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      scrollBottom: (e) => { e.preventDefault(); window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' }); },
+      menuTop: (e) => { e.preventDefault(); this.setState({ menuOpen: false }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      menuBottom: (e) => { e.preventDefault(); this.setState({ menuOpen: false }); setTimeout(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' }), 50); },
       scrollWorks: (e) => { e.preventDefault(); const m = document.getElementById('works'); if (m) window.scrollTo({ top: m.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' }); },
       goNext: this.nav(next.slug),
       nextTitle: next.title,

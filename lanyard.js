@@ -890,6 +890,8 @@ export function mountLanyard(container, options = {}) {
     cardGroup.quaternion.copy(sim.body.quaternion);
     updateBand();
     renderer.render(scene, camera);
+    const cb = settingsRef.current.onMove;
+    if (cb) { const p = sim.body.position.clone().project(camera); cb((p.x * 0.5 + 0.5) * view.width, (-p.y * 0.5 + 0.5) * view.height, view); }
   };
 
   const physics = () => {
