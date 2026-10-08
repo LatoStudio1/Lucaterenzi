@@ -657,6 +657,7 @@ export function mountLanyard(container, options = {}) {
 
   const frontMaterial = new THREE.MeshPhysicalMaterial({ map: frontTexture, normalMap: grain, normalScale: new THREE.Vector2(0.06, 0.06) });
   const backMaterial = new THREE.MeshPhysicalMaterial({ map: backTexture, normalMap: grain, normalScale: new THREE.Vector2(0.06, 0.06) });
+  [frontMaterial, backMaterial].forEach(m => { m.polygonOffset = true; m.polygonOffsetFactor = -2; m.polygonOffsetUnits = -2; });
   frontMaterial.onBeforeCompile = injectFoil;
   backMaterial.onBeforeCompile = injectFoil;
   const edgeMaterial = new THREE.MeshPhysicalMaterial();
@@ -729,9 +730,12 @@ export function mountLanyard(container, options = {}) {
   const frameView = () => {
     const s = settingsRef.current;
     const aspect = view.width / view.height;
-    let viewHeight = layout.height / clamp(s.size, 0.15, 0.9);
+    const frame = Math.min(view.height, (container.parentElement && container.parentElement.clientHeight) || view.height);
+    let base = layout.height / clamp(s.size, 0.15, 0.9);
     const minimumWidth = layout.width / 0.72;
-    if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
+    const frameAspect = view.width / frame;
+    if (base * frameAspect < minimumWidth) base = minimumWidth / frameAspect;
+    const viewHeight = (base * view.height) / frame;
     const viewWidth = viewHeight * aspect;
     camera.aspect = aspect;
     camera.position.set(0, 0, viewHeight / 2 / Math.tan((FOV * Math.PI) / 360));
@@ -743,7 +747,7 @@ export function mountLanyard(container, options = {}) {
     foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
     const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
     const anchorY = viewHeight / 2 + 0.2;
-    const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+    const cardTop = viewHeight / 2 - base * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
     const hangTop = cardTop + (layout.hangY - layout.height / 2);
     sim.anchor.set(anchorX, anchorY, 0);
     configureSimulation(sim, layout, anchorY - hangTop);
@@ -766,9 +770,9 @@ export function mountLanyard(container, options = {}) {
       bodyMesh.geometry = geometry.body;
       frontMesh.geometry = geometry.face;
       backMesh.geometry = geometry.face.clone();
-      frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0006;
+      frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0018;
       backMesh.rotation.y = Math.PI;
-      backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0006);
+      backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0018);
       ring.position.set(0, layout.ringY, 0);
       applied.framingKey = '';
     }
@@ -817,7 +821,7 @@ export function mountLanyard(container, options = {}) {
       clampMesh.geometry.dispose();
       clampMesh.geometry = buildClampGeometry(strapScale);
     }
-    canvas.style.touchAction = s.interactive ? 'pan-y' : 'auto';
+    canvas.style.touchAction = 'auto';
     applied = { layoutKey, framingKey, imageKey, faceKey, strapColor: s.strapColor, strapScale };
     start();
   };
@@ -896,7 +900,7 @@ export function mountLanyard(container, options = {}) {
     updateBand();
     renderer.render(scene, camera);
     const cb = settingsRef.current.onMove;
-    if (cb) { const p = sim.body.position.clone().project(camera); cb((p.x * 0.5 + 0.5) * view.width, (-p.y * 0.5 + 0.5) * view.height, view); }
+    if (cb) { const p = sim.body.position.clone().project(camera); const q = sim.body.position.clone(); q.y += 1; q.project(camera); const ppu = Math.abs(q.y - p.y) * 0.5 * view.height; cb((p.x * 0.5 + 0.5) * view.width, (-p.y * 0.5 + 0.5) * view.height, view, { ppu, w: layout.width, h: layout.height, back: new THREE.Vector3(0, 0, 1).applyQuaternion(sim.body.quaternion).z < -0.35, speed: sim.body.velocity.length() + sim.body.angular.length() * 0.3 }); }
   };
 
   const physics = () => {
@@ -955,7 +959,7 @@ export function mountLanyard(container, options = {}) {
     const hits = raycaster.intersectObjects([bodyMesh, frontMesh, backMesh], false);
     return hits[0] || null;
   };
-  const setCursor = value => { if (canvas.style.cursor !== value) canvas.style.cursor = value; };
+  const setCursor = value => { if (document.documentElement.style.cursor !== value) document.documentElement.style.cursor = value; };
 
   const flip = point => {
     const body = sim.body;
@@ -1012,12 +1016,12 @@ export function mountLanyard(container, options = {}) {
     if (pickCard()) event.preventDefault();
   };
 
-  canvas.addEventListener('pointerdown', onPointerDown);
-  canvas.addEventListener('pointermove', onPointerMove);
-  canvas.addEventListener('pointerup', onPointerUp);
-  canvas.addEventListener('pointercancel', onPointerUp);
-  canvas.addEventListener('lostpointercapture', onPointerUp);
-  canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+  canvas.style.pointerEvents = 'none';
+  window.addEventListener('pointerdown', onPointerDown);
+  window.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
+  window.addEventListener('touchstart', onTouchStart, { passive: false });
 
   const resize = () => {
     view.width = Math.max(1, container.clientWidth);
@@ -1046,12 +1050,12 @@ export function mountLanyard(container, options = {}) {
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
-      canvas.removeEventListener('pointerdown', onPointerDown);
-      canvas.removeEventListener('pointermove', onPointerMove);
-      canvas.removeEventListener('pointerup', onPointerUp);
-      canvas.removeEventListener('pointercancel', onPointerUp);
-      canvas.removeEventListener('lostpointercapture', onPointerUp);
-      canvas.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
+      window.removeEventListener('touchstart', onTouchStart);
+      document.documentElement.style.cursor = '';
       [bodyMesh, frontMesh, backMesh, ring, clampMesh, eyelet, band].forEach(m => m.geometry?.dispose());
       [frontMaterial, backMaterial, edgeMaterial, metalMaterial, bandMaterial].forEach(m => m.dispose());
       [frontTexture, backTexture, strapTexture, grain, weave].forEach(t => t.dispose());

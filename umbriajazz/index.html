@@ -12,25 +12,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
-@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Pixelify Sans';src:url('../fonts/PixelifySans-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-html,body{margin:0;background:#0b0b0b;color:#f4f4f4;-webkit-font-smoothing:antialiased}
+@font-face{font-family:'PP Neue Montreal';src:url('fonts/PPNeueMontreal-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Montreal';src:url('fonts/PPNeueMontreal-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Montreal';src:url('fonts/PPNeueMontreal-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Montreal';src:url('fonts/PPNeueMontreal-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Pixelify Sans';src:url('fonts/PixelifySans-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+html,body{margin:0;background:#121212;color:#f4f4f4;-webkit-font-smoothing:antialiased}
 a{color:inherit}a:hover{color:#aaa}
 *{box-sizing:border-box}
 </style>
 </helmet>
 
-<div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+<div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#121212;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
   <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Luca Terenzi</a>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><a href="#" onClick="{{ scrollBottom }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a></sc-if>
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><a href="#" onClick="{{ openMenu }}" style="color:#f4f4f4;text-decoration:none">Menu</a></sc-if>
 </div>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;z-index:40;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:20px;letter-spacing:-0.035em">
+<div style="position:fixed;inset:0;z-index:40;background:#121212;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:20px;letter-spacing:-0.035em">
   <div style="display:flex;justify-content:space-between;font-size:18px;line-height:1;letter-spacing:-0.02em">
     <span>Luca Terenzi</span>
     <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">Close</a>
@@ -45,19 +45,24 @@ a{color:inherit}a:hover{color:#aaa}
 </sc-if>
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#0b0b0b">
+<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#121212">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;color:#f4f4f4;display:flex;align-items:center;justify-content:center;overflow:hidden">
-    <img id="welcome-text" data-fadein="" src="../projects/welcome.png" alt="Welcome to my portfolio!" style="opacity:0;transition:opacity 1.4s ease .5s;display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
+    <img id="welcome-text" data-fadein="" src="projects/welcome.png" alt="Welcome to my portfolio!" style="opacity:0;transition:opacity 1.4s ease .5s;display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
+  </div>
+  <div id="chromeAb" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;clip-path:circle(0)">
+    <img id="chromeAbImg" src="projects/welcome.png" alt="" style="display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
   </div>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
-  <div data-fadein="" style="position:absolute;left:max(20px,calc(50% - min(41vw,540px)));bottom:11vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;opacity:0;transition:opacity 1.2s ease 2.6s;transform:rotate(6deg);transform-origin:left top;width:max-content">
+  <div id="turnHintD" data-fadein="" style="position:absolute;left:max(20px,calc(50% - min(41vw,540px)));bottom:11vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;opacity:0;transition:opacity 1.2s ease 2.6s;transform:rotate(6deg);transform-origin:left top;width:max-content">
     <div style="font-size:clamp(24px,2.9vw,56px);line-height:1.02;white-space:nowrap">turn it around to find out more about me! :)</div>
   </div>
   </sc-if>
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
-  <div data-fadein="" style="position:absolute;left:50%;bottom:19vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;font-size:min(5.4vw,3.3vh);line-height:1;white-space:nowrap;opacity:0;transition:opacity 1.2s ease 2.6s;transform:translateX(-50%) rotate(3deg)">turn it around to find out more about me! :)</div>
+  <div id="turnHint" data-fadein="" style="position:absolute;left:50%;bottom:19vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;font-size:min(5.4vw,3.3vh);line-height:1;white-space:nowrap;opacity:0;transition:opacity 1.2s ease 2.6s;transform:translateX(-50%) rotate(3deg)">turn it around to find out more about me! :)</div>
   </sc-if>
-  <div ref="{{ lanyardRef }}" style="position:absolute;inset:0;z-index:1;overflow:hidden"></div>
+  
+  <div id="chromeMask" style="position:absolute;left:0;top:0;width:0;height:0;z-index:1;pointer-events:none;opacity:0;will-change:backdrop-filter,opacity;-webkit-mask-image:radial-gradient(closest-side,#000 92%,transparent 100%);mask-image:radial-gradient(closest-side,#000 92%,transparent 100%);transition:opacity .3s"></div>
+  <div ref="{{ lanyardRef }}" style="position:absolute;top:0;left:0;right:0;height:calc(100% + 80vh);z-index:1;pointer-events:none"></div>
   <div style="grid-column:1 / span 2;position:relative;z-index:3;pointer-events:none">
     <a href="#" onClick="{{ goHome }}" style="display:block;color:#f4f4f4;text-decoration:none;pointer-events:auto;width:fit-content" data-scramble="">Luca Terenzi</a>
     <div style="color:#f4f4f4" data-scramble="">Graphic Designer</div>
@@ -75,8 +80,8 @@ a{color:inherit}a:hover{color:#aaa}
 </section>
 <main id="works" data-screen-label="Home" style="font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:0 20px 160px">
   <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;align-items:end;padding-top:clamp(40px,6vh,100px);padding-bottom:clamp(24px,1.6vw,40px)">
-    <div style="grid-column:{{ arrowCol }};font-weight:300;font-size:clamp(40px,3.4vw,88px);line-height:1">→</div>
-    <h1 data-scramble="" style="grid-column:{{ titleCol }};margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(52px,4.6vw,120px);line-height:0.9;letter-spacing:-0.02em">Projects</h1>
+    <div style="grid-column:{{ arrowCol }};grid-row:1;font-weight:300;font-size:clamp(40px,3.4vw,88px);line-height:1">→</div>
+    <h1 data-scramble="" style="grid-column:{{ titleCol }};grid-row:1;justify-self:{{ titleSelf }};margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(52px,4.6vw,120px);line-height:0.9;letter-spacing:-0.02em">Projects</h1>
   </div>
 
   <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;row-gap:clamp(60px,5vw,120px);align-items:start">
@@ -84,7 +89,7 @@ a{color:inherit}a:hover{color:#aaa}
       <a href="#" onClick="{{ c.open }}" style="grid-column:span {{ c.span }};min-width:0;text-decoration:none;color:#f4f4f4;display:flex;flex-direction:column;gap:clamp(12px,1.2vw,30px)">
         <div onMouseMove="{{ c.move }}" onMouseLeave="{{ c.leave }}" style="position:relative;overflow:hidden;aspect-ratio:{{ c.ratio }};background:{{ c.bg }};border-radius:14px;cursor:none">
           <div style="width:100%;height:100%;background-image:{{ c.bgImage }};background-size:cover;background-position:center;transition:transform 1.2s cubic-bezier(.22,.61,.36,1);transform:scale({{ c.scale }})"></div>
-          <video src="../projects/{{ c.slug }}/hover.mp4" muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:{{ c.op }};transform:scale({{ c.vScale }});transition:opacity 1.1s cubic-bezier(.4,0,.2,1) .12s,transform 1.4s cubic-bezier(.22,.61,.36,1)"></video>
+          <video src="projects/{{ c.slug }}/hover.mp4" muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:{{ c.op }};transform:scale({{ c.vScale }});transition:opacity 1.1s cubic-bezier(.4,0,.2,1) .12s,transform 1.4s cubic-bezier(.22,.61,.36,1)"></video>
           <div style="position:absolute;inset:0;background-image:{{ c.gifImage }};background-size:cover;background-position:center;pointer-events:none;opacity:{{ c.op }};transition:opacity .7s ease"></div>
           <div style="position:absolute;left:{{ c.x }}px;top:{{ c.y }}px;display:flex;gap:4px;pointer-events:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:clamp(12px,0.8vw,18px);letter-spacing:0.04em;color:#111;opacity:{{ c.op }};transform:translate(-50%,-50%) scale({{ c.labelScale }});transition:opacity .6s ease,transform .7s cubic-bezier(.22,.61,.36,1)">
             <div style="background:#fff;border-radius:4px;padding:0.9em 1.1em;line-height:1">DISCOVER</div>
@@ -164,7 +169,7 @@ a{color:inherit}a:hover{color:#aaa}
   </div>
 </main>
 </sc-if>
-<div ref="{{ footerRef }}" style="overflow:hidden;background:#0b0b0b">
+<div ref="{{ footerRef }}" style="overflow:hidden;background:#121212">
 <footer data-screen-label="Footer" style="opacity:0;transform:translateY(60px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);background:#ff5a00;color:#000;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:20px;display:flex;flex-direction:column;gap:clamp(24px,3vw,60px);letter-spacing:-0.02em">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px 20px;font-size:clamp(14px,1.05vw,20px);line-height:1.15;max-width:60vw;min-width:min(100%,520px)">
     <div style="display:flex;flex-direction:column;min-width:0"><div style="opacity:.45">Index</div><div>Works</div><div>Home</div></div>
@@ -194,48 +199,48 @@ a{color:inherit}a:hover{color:#aaa}
 */
 const PROJECTS = [
   { slug: 'art-of-disobedience', size: 'L', title: 'The Art Of Disobedience', tags: 'Brand Identity, Motion Graphics, Social Media',
-    cover: '../projects/art-of-disobedience/cover.png', bg: '#0d2a2c',
+    cover: 'projects/art-of-disobedience/cover.png', bg: '#0d2a2c',
     intro: 'Visual identity, motion graphics, and social media content for the documentary "The Art Of Disobedience" exploring the rebellious world of graffiti through the story of Geco.',
-    heroVideo: '../projects/art-of-disobedience/hero.mp4', heroRatio: '640/480',
+    heroVideo: 'projects/art-of-disobedience/hero.mp4', heroRatio: '640/480',
     details: [
       'THE ART OF DISOBEDIENCE is an adrenaline-filled journey into the world of graffiti writing through the eyes of Geco, one of the most famous and prolific writers in Europe. With extraordinary determination and a distinctive style, he has turned his art into an act of defiance against rules and social conventions.',
       'I crafted the graphic identity, making all the motion graphics for the documentary and creating the social media strategy and graphics. Helped with the creation of the website, editing the pictures and any graphic related stuff.',
     ],
     software: 'Adobe After Effects, Adobe Photoshop, Adobe Illustrator.',
     gallery: [
-      { img: '../projects/art-of-disobedience/gallery-0.webp', span: 2, ratio: '1080/1350', natural: true, bgSize: 'cover' },
-      { video: '../projects/art-of-disobedience/gallery-00.mp4', span: 2, ratio: '1080/1350', natural: true, fit: 'cover' },
-      { img: '../projects/art-of-disobedience/gallery-1.webp', span: 4, ratio: '3780/1608', natural: true },
-      { img: '../projects/art-of-disobedience/gallery-2.webp', span: 2, ratio: '4/3' },
-      { img: '../projects/art-of-disobedience/gallery-3.webp', span: 2, ratio: '4/3' },
-      { img: '../projects/art-of-disobedience/gallery-6.webp', span: 2, ratio: '1080/1076', natural: true },
-      { img: '../projects/art-of-disobedience/gallery-5.webp', span: 2, ratio: '1080/1076', natural: true, bgSize: 'cover' },
-      { img: '../projects/art-of-disobedience/gallery-4.webp', span: 2, ratio: '1556/1980', natural: true },
-      { video: '../projects/art-of-disobedience/gallery-04.mp4', span: 2, ratio: '1556/1980', natural: true, fit: 'cover' },
+      { img: 'projects/art-of-disobedience/gallery-0.webp', span: 2, ratio: '1080/1350', natural: true, bgSize: 'cover' },
+      { video: 'projects/art-of-disobedience/gallery-00.mp4', span: 2, ratio: '1080/1350', natural: true, fit: 'cover' },
+      { img: 'projects/art-of-disobedience/gallery-1.webp', span: 4, ratio: '3780/1608', natural: true },
+      { img: 'projects/art-of-disobedience/gallery-2.webp', span: 2, ratio: '4/3' },
+      { img: 'projects/art-of-disobedience/gallery-3.webp', span: 2, ratio: '4/3' },
+      { img: 'projects/art-of-disobedience/gallery-6.webp', span: 2, ratio: '1080/1076', natural: true },
+      { img: 'projects/art-of-disobedience/gallery-5.webp', span: 2, ratio: '1080/1076', natural: true, bgSize: 'cover' },
+      { img: 'projects/art-of-disobedience/gallery-4.webp', span: 2, ratio: '1556/1980', natural: true },
+      { video: 'projects/art-of-disobedience/gallery-04.mp4', span: 2, ratio: '1556/1980', natural: true, fit: 'cover' },
     ] },
-  { slug: 'byld-studio', size: 'S', title: 'Byld Studio', tags: 'Co-founder', cover: '../projects/byld-studio/cover.png', bg: '#000', manifesto: true,
+  { slug: 'byld-studio', size: 'S', title: 'Byld Studio', tags: 'Co-founder', cover: 'projects/byld-studio/cover.png', bg: '#000', manifesto: true,
     heroTitle: 'Byld Studio', heroBlank: true,
     intro: 'Co-founder of Byld Studio.', details: ['BYLD Studio is a Rome-based graphic design studio. We focus on a creative, authentic, and innovative communication, transforming ideas into unique projects that create value and identity.'], software: 'Adobe Illustrator, Photoshop, InDesign, Blender, Figma',
     // 4-column grid, two formats only: span 2 (half) or span 1 (quarter). Each row must sum to 4.
     gallery: [
-      { video: '../projects/byld-studio/gallery-1.mp4', span: 2, ratio: '4/5', tall: true, fit: 'cover' },
-      { video: '../projects/byld-studio/gallery-2.mp4', span: 2, ratio: '4/5', tall: true, fit: 'cover' },
-      { video: '../projects/byld-studio/gallery-4.mp4', span: 1, ratio: '9/16', fit: 'cover' },
-      { video: '../projects/byld-studio/gallery-5.mp4', span: 1, ratio: '9/16', fit: 'cover' },
-      { video: '../projects/byld-studio/gallery-3.mp4', span: 2, ratio: '4/5', fill: true, fit: 'cover' }, // tall = same height as a 9:16 quarter tile, cropped & centered; fill = takes the row height of its neighbours, video cropped & centered
-      { video: '../projects/byld-studio/gallery-6.mp4', span: 1, ratio: '9/16', fit: 'cover' },
-      { video: '../projects/byld-studio/hero.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: 'projects/byld-studio/gallery-1.mp4', span: 2, ratio: '4/5', tall: true, fit: 'cover' },
+      { video: 'projects/byld-studio/gallery-2.mp4', span: 2, ratio: '4/5', tall: true, fit: 'cover' },
+      { video: 'projects/byld-studio/gallery-4.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: 'projects/byld-studio/gallery-5.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: 'projects/byld-studio/gallery-3.mp4', span: 2, ratio: '4/5', fill: true, fit: 'cover' }, // tall = same height as a 9:16 quarter tile, cropped & centered; fill = takes the row height of its neighbours, video cropped & centered
+      { video: 'projects/byld-studio/gallery-6.mp4', span: 1, ratio: '9/16', fit: 'cover' },
+      { video: 'projects/byld-studio/hero.mp4', span: 1, ratio: '9/16', fit: 'cover' },
     ] },
-  { slug: 'lo-spettacolo-siamo-noi', size: 'S', title: 'Lo spettacolo siamo noi', tags: 'Motion Graphics', cover: '../projects/lo-spettacolo-siamo-noi/cover.png', bg: '#3a6f9a',
-    heroVideo: '../projects/lo-spettacolo-siamo-noi/hero.mp4', heroRatio: '16/9',
+  { slug: 'lo-spettacolo-siamo-noi', size: 'S', title: 'Lo spettacolo siamo noi', tags: 'Motion Graphics', cover: 'projects/lo-spettacolo-siamo-noi/cover.png', bg: '#3a6f9a',
+    heroVideo: 'projects/lo-spettacolo-siamo-noi/hero.mp4', heroRatio: '16/9',
     intro: 'A documentary exploring the spirit, history, and contradictions of the Orbetello ultras.\n\nDirected by Barbara Di Lieto, the film captures the raw energy and deep-rooted identity of the town’s most devoted supporters.', details: ['Design and animation of the opening sequence for a sports documentary, including custom sound effects and lower-third graphics. A cohesive visual and audio introduction that sets the tone and identity of the film from the very first frame.', 'The visuals are built around blue, the color of the city, and the wind, a defining element of its landscape, creating a bold, atmospheric introduction to the story.'], software: 'Adobe After Effects.',
-    gallery: [{ video: '../projects/lo-spettacolo-siamo-noi/gallery-1.mp4', span: 4, ratio: '16/9', tall: true },
-      { video: '../projects/lo-spettacolo-siamo-noi/gallery-2.mp4', span: 2, ratio: '1862/1044' },
-      { img: '../projects/lo-spettacolo-siamo-noi/gallery-3.jpg', span: 2, ratio: '16/9', bgSize: 'cover' }] },
-  { slug: 'lato-studio', size: 'S', title: 'Lato Studio', tags: 'Co-founder', hoverTags: 'Brand Identity, Motion Graphics, Art Direction', cover: '../projects/lato-studio/cover.jpg', bg: '#5c0aff',
+    gallery: [{ video: 'projects/lo-spettacolo-siamo-noi/gallery-1.mp4', span: 4, ratio: '16/9', tall: true },
+      { video: 'projects/lo-spettacolo-siamo-noi/gallery-2.mp4', span: 2, ratio: '1862/1044' },
+      { img: 'projects/lo-spettacolo-siamo-noi/gallery-3.jpg', span: 2, ratio: '16/9', bgSize: 'cover' }] },
+  { slug: 'lato-studio', size: 'S', title: 'Lato Studio', tags: 'Co-founder', hoverTags: 'Brand Identity, Motion Graphics, Art Direction', cover: 'projects/lato-studio/cover.jpg', bg: '#5c0aff',
     intro: 'Co-founder of Lato Studio, a YouTube agency.', details: ['Describe the project here.'], software: 'Adobe Illustrator.', gallery: [] },
-  { slug: 'saveeat', size: 'S', title: 'SaveEat', tags: 'Brand Identity, UX/UI', cover: '../projects/saveeat/cover.png', bg: '#1f6b5c',
-    heroVideo: '../projects/saveeat/hero.mp4', heroRatio: '16/9', heroTitle: 'Saveeat',
+  { slug: 'saveeat', size: 'S', title: 'SaveEat', tags: 'Brand Identity, UX/UI', cover: 'projects/saveeat/cover.png', bg: '#1f6b5c',
+    heroVideo: 'projects/saveeat/hero.mp4', heroRatio: '16/9', heroTitle: 'Saveeat',
     intro: 'An academic project focused on sustainable branding and eco-conscious behavior in the food industry.',
     details: [
       'A branding and marketing project developed for Saveeat, an eco-friendly doggy bag designed to encourage sustainable behavior in restaurants.',
@@ -244,33 +249,33 @@ const PROJECTS = [
     ],
     software: 'Adobe Illustrator, Adobe Photoshop, Adobe Dimension',
     gallery: [
-      { img: '../projects/saveeat/gallery-1.png', span: 4, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-2.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-3.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-4.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-5.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-6.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-7.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-8.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-9.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-10.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-11.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-12.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-13.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-14.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-15.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-16.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-17.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-18.png', span: 2, ratio: '1921/1080', natural: true },
-      { img: '../projects/saveeat/gallery-19.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-1.png', span: 4, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-2.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-3.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-4.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-5.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-6.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-7.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-8.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-9.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-10.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-11.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-12.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-13.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-14.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-15.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-16.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-17.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-18.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: 'projects/saveeat/gallery-19.png', span: 2, ratio: '1921/1080', natural: true },
     ] },
   { slug: 'project-name', size: 'L', title: 'Project name', tags: 'Category', cover: '', bg: 'linear-gradient(135deg,#e100e6,#ff3fd0)',
     intro: 'Short project description.', details: ['Describe the project here.'], software: '—', gallery: [] },
-  { slug: 'globetrotter', size: 'L', title: 'Globetrotter', tags: 'Brand Identity, UX/UI, Motion Graphics', cover: '../projects/globetrotter/cover.png', bg: '#22111a',
+  { slug: 'globetrotter', size: 'L', title: 'Globetrotter', tags: 'Brand Identity, UX/UI, Motion Graphics', cover: 'projects/globetrotter/cover.png', bg: '#22111a',
     intro: 'Brand identity, app design and motion for Globetrotter.', details: ['Describe the project here.'], software: 'Figma, Adobe After Effects, Adobe Illustrator.', gallery: [] },
-  { slug: 'loacker-finger', size: 'S', title: 'Loacker Finger', tags: 'Brand Identity, Art Direction, 3d design, die-cut design', cover: '../projects/loacker-finger/cover.png', bg: '#c0121e',
+  { slug: 'loacker-finger', size: 'S', title: 'Loacker Finger', tags: 'Brand Identity, Art Direction, 3d design, die-cut design', cover: 'projects/loacker-finger/cover.png', bg: '#c0121e',
     intro: 'Brand identity and packaging concept for Loacker Finger.', details: ['Loacker Finger reinvents the traditional wafer experience by introducing a cardboard pack with a dedicated finger space to easily lift each piece.', 'The project includes a total rebrand, custom die-line, outer sleeve, and friendly textures based on doodles to create a playful and engaging tone.', 'From packaging engineering to billboard mockups, the work merges creativity with functional thinking.'], software: 'Adobe Illustrator, Adobe Photoshop, Adobe Dimension', gallery: [] },
-  { slug: 'umbria-jazz', size: 'S', title: 'Umbria Jazz', tags: 'Brand Identity, Art Direction', cover: '../projects/umbria-jazz/cover.png', bg: '#0a0a0a',
+  { slug: 'umbria-jazz', size: 'S', title: 'Umbria Jazz', tags: 'Brand Identity, Art Direction', cover: 'projects/umbria-jazz/cover.png', bg: '#0a0a0a',
     intro: 'Brand identity and art direction for Umbria Jazz.', details: ['Describe the project here.'], software: 'Adobe Illustrator, Adobe Photoshop.', gallery: [] },
 ];
 
@@ -323,8 +328,35 @@ class Component extends DCLogic {
     Promise.all([import(abs('lanyard.js')), face()]).then(([m, front]) => {
       if (this._lanyEl !== el) return;
       this._lany = m.mountLanyard(el, {
-        frontImage: abs('../projects/foto-card.jpg'), cardColor: '#ffffff', backImage: front, cornerRadius: 0.35, size: window.innerWidth < 700 ? 0.48 : 0.55, anchor: 'center', strapLength: 0.45,
-        strapColor: '#ff5a00', strapWidth: 0.7, metal: 'silver', finish: 'glossy',
+        frontImage: abs('projects/foto-card.jpg'), cardColor: '#ffffff', backImage: front, cornerRadius: 0.35, size: window.innerWidth < 700 ? 0.48 : 0.55, anchor: 'center', strapLength: 0.45,
+        strapColor: '#ff5a00', strapWidth: 0.7, metal: 'silver', finish: 'glossy', breeze: 0,
+        onMove: (x, y, view, d) => {
+          const mk = document.getElementById('chromeMask');
+          if (!mk || !d) return;
+          const w = d.w * d.ppu * 1.3, h = d.h * d.ppu * 1.2;
+          mk.style.width = w + 'px'; mk.style.height = h + 'px';
+          mk.style.transform = 'translate(' + (x - w / 2) + 'px,' + (y - h / 2) + 'px)';
+          if (d.back && !this._flipped) { this._flipped = true; ['turnHint', 'turnHintD'].forEach((id) => { const th = document.getElementById(id); if (th) { th.style.transition = 'opacity .6s ease'; th.style.setProperty('opacity', '0', 'important'); } }); }
+          this._mr = [x, y, w, h];
+          this._sp = (this._sp || 0) * 0.85 + Math.min(d.speed, 5) * 0.15;
+          this._spT = performance.now();
+          if (!this._spLoop) {
+            const loop = () => {
+              const mk2 = document.getElementById('chromeMask');
+              if (!mk2) { this._spLoop = 0; return; }
+              if (performance.now() - this._spT > 80) this._sp *= 0.9;
+              const wt = document.getElementById('welcome-text'), ready = wt && parseFloat(getComputedStyle(wt).opacity) > 0.98, sp = !ready || this._sp < 0.05 ? 0 : Math.min(this._sp, 4);
+              const f = sp ? 'blur(' + (sp * 2.2).toFixed(1) + 'px) saturate(' + (1 + sp * 0.6).toFixed(2) + ') hue-rotate(' + (sp * 25).toFixed(0) + 'deg)' : 'none';
+              const ab = document.getElementById('chromeAb'), ai = document.getElementById('chromeAbImg'), r = this._mr;
+              if (ab && ai && r) {
+                if (sp) { const o = (sp * 2.5).toFixed(1); ab.style.clipPath = 'ellipse(' + r[2] / 2 + 'px ' + r[3] / 2 + 'px at ' + r[0] + 'px ' + r[1] + 'px)'; ai.style.filter = 'drop-shadow(' + o + 'px 0 0 #f00) drop-shadow(-' + o + 'px 0 0 #0af)'; ab.style.opacity = '1'; } else ab.style.opacity = '0';
+              }
+              if (f !== this._lf) { this._lf = f; mk2.style.backdropFilter = f; mk2.style.webkitBackdropFilter = f; mk2.style.opacity = sp ? '1' : '0'; }
+              this._spLoop = requestAnimationFrame(loop);
+            };
+            this._spLoop = requestAnimationFrame(loop);
+          }
+        },
       });
     }).catch((e) => console.warn('lanyard', e));
   };
@@ -390,7 +422,7 @@ class Component extends DCLogic {
       try {
         const lib = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');
         lib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
-        this._pdf = this._pdf || lib.getDocument('../projects/byld-studio/manifesto.pdf').promise;
+        this._pdf = this._pdf || lib.getDocument('projects/byld-studio/manifesto.pdf').promise;
         const doc = await this._pdf;
         for (const c of cs) {
           const pg = await doc.getPage(+c.getAttribute('data-pdfpage'));
@@ -436,13 +468,14 @@ class Component extends DCLogic {
       galleryCols: `repeat(${gc}, minmax(0, 1fr))`,
       gridCols: `repeat(${cols}, minmax(0, 1fr))`,
       arrowCol: cols === 1 ? '1 / -1' : (cols === 4 ? '1 / span 2' : '1 / span 1'),
+      titleSelf: cols === 1 ? 'end' : 'start',
       titleCol: cols === 1 ? '1 / -1' : (cols === 4 ? '3 / span 2' : '2 / span 1'),
       leftCol: cols === 4 ? '1 / span 2' : '1 / -1',
       rightCol: cols === 4 ? '3 / span 2' : '1 / -1',
       cards: PROJECTS.map(pr => ({
         ...pr, span: fit(SIZES[pr.size].span), ratio: SIZES[pr.size].ratio,
         bgImage: url(pr.cover), open: this.nav(pr.slug),
-        gifImage: this.state.hover === pr.slug ? url(`../projects/${pr.slug}/hover.gif?h=${this.state.lastKey[pr.slug] || 0}`) : (this.state.lastKey[pr.slug] ? url(`../projects/${pr.slug}/hover.gif?h=${this.state.lastKey[pr.slug]}`) : 'none'),
+        gifImage: this.state.hover === pr.slug ? url(`projects/${pr.slug}/hover.gif?h=${this.state.lastKey[pr.slug] || 0}`) : (this.state.lastKey[pr.slug] ? url(`projects/${pr.slug}/hover.gif?h=${this.state.lastKey[pr.slug]}`) : 'none'),
         tagList: (pr.hoverTags || pr.tags).split(',').map(t => t.trim()).filter(Boolean),
         ...(this.state.hover === pr.slug
           ? { vScale: 1, op: 1, x: this.state.mx, y: this.state.my, scale: 1.025, labelScale: 1, chipY: 0 }
@@ -461,7 +494,7 @@ class Component extends DCLogic {
         heroFit: p.heroFit || 'contain',
         bg: p.heroBg || (p.heroVideo ? '#000' : p.bg),
       },
-      gallery: (p.gallery && p.gallery.length ? p.gallery : [[2, 1], [2, 2], [1, 3], [1, 4], [2, 5]].map(([s, n]) => ({ img: '', span: s, ratio: n <= 2 ? '4/5' : '9/16', tall: n <= 2, fill: n === 5, label: `../projects/${p.slug}/gallery-${n}.png` }))).map(g => ({ label: '', video: '', bg: '#000', fit: 'contain', bgSize: 'contain', vscale: 1, ...g, height: gc === 4 && !g.natural ? `${Math.round((document.documentElement.clientWidth - 100) / 4 * 16 / 9)}px` : 'auto', align: 'start', ratio: gc === 4 && !g.natural ? 'auto' : g.ratio, span: gfit(g.span), bgImage: url(g.img) })),
+      gallery: (p.gallery && p.gallery.length ? p.gallery : [[2, 1], [2, 2], [1, 3], [1, 4], [2, 5]].map(([s, n]) => ({ img: '', span: s, ratio: n <= 2 ? '4/5' : '9/16', tall: n <= 2, fill: n === 5, label: `projects/${p.slug}/gallery-${n}.png` }))).map(g => ({ label: '', video: '', bg: '#000', fit: 'contain', bgSize: 'contain', vscale: 1, ...g, height: gc === 4 && !g.natural ? `${Math.round((document.documentElement.clientWidth - 100) / 4 * 16 / 9)}px` : 'auto', align: 'start', ratio: gc === 4 && !g.natural ? 'auto' : g.ratio, span: gfit(g.span), bgImage: url(g.img) })),
       goHome: this.nav('home'),
       lanyardRef: this.lanyardRef,
       footerRef: this.footerRef,

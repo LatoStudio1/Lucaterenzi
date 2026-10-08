@@ -17,20 +17,20 @@
 @font-face{font-family:'PP Neue Montreal';src:url('fonts/PPNeueMontreal-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'PP Neue Montreal';src:url('fonts/PPNeueMontreal-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:'Pixelify Sans';src:url('fonts/PixelifySans-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-html,body{margin:0;background:#0b0b0b;color:#f4f4f4;-webkit-font-smoothing:antialiased}
+html,body{margin:0;background:#121212;color:#f4f4f4;-webkit-font-smoothing:antialiased}
 a{color:inherit}a:hover{color:#aaa}
 *{box-sizing:border-box}
 </style>
 </helmet>
 
-<div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+<div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#121212;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
   <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Luca Terenzi</a>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><a href="#" onClick="{{ scrollBottom }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a></sc-if>
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><a href="#" onClick="{{ openMenu }}" style="color:#f4f4f4;text-decoration:none">Menu</a></sc-if>
 </div>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;z-index:40;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:20px;letter-spacing:-0.035em">
+<div style="position:fixed;inset:0;z-index:40;background:#121212;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:20px;letter-spacing:-0.035em">
   <div style="display:flex;justify-content:space-between;font-size:18px;line-height:1;letter-spacing:-0.02em">
     <span>Luca Terenzi</span>
     <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">Close</a>
@@ -45,19 +45,24 @@ a{color:inherit}a:hover{color:#aaa}
 </sc-if>
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#0b0b0b">
+<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#121212">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;color:#f4f4f4;display:flex;align-items:center;justify-content:center;overflow:hidden">
     <img id="welcome-text" data-fadein="" src="projects/welcome.png" alt="Welcome to my portfolio!" style="opacity:0;transition:opacity 1.4s ease .5s;display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
   </div>
+  <div id="chromeAb" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;clip-path:circle(0)">
+    <img id="chromeAbImg" src="projects/welcome.png" alt="" style="display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
+  </div>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
-  <div data-fadein="" style="position:absolute;left:max(20px,calc(50% - min(41vw,540px)));bottom:11vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;opacity:0;transition:opacity 1.2s ease 2.6s;transform:rotate(6deg);transform-origin:left top;width:max-content">
+  <div id="turnHintD" data-fadein="" style="position:absolute;left:max(20px,calc(50% - min(41vw,540px)));bottom:11vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;opacity:0;transition:opacity 1.2s ease 2.6s;transform:rotate(6deg);transform-origin:left top;width:max-content">
     <div style="font-size:clamp(24px,2.9vw,56px);line-height:1.02;white-space:nowrap">turn it around to find out more about me! :)</div>
   </div>
   </sc-if>
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
-  <div data-fadein="" style="position:absolute;left:50%;bottom:19vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;font-size:min(5.4vw,3.3vh);line-height:1;white-space:nowrap;opacity:0;transition:opacity 1.2s ease 2.6s;transform:translateX(-50%) rotate(3deg)">turn it around to find out more about me! :)</div>
+  <div id="turnHint" data-fadein="" style="position:absolute;left:50%;bottom:19vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;font-size:min(5.4vw,3.3vh);line-height:1;white-space:nowrap;opacity:0;transition:opacity 1.2s ease 2.6s;transform:translateX(-50%) rotate(3deg)">turn it around to find out more about me! :)</div>
   </sc-if>
-  <div ref="{{ lanyardRef }}" style="position:absolute;inset:0;z-index:1;overflow:hidden"></div>
+  
+  <div id="chromeMask" style="position:absolute;left:0;top:0;width:0;height:0;z-index:1;pointer-events:none;opacity:0;will-change:backdrop-filter,opacity;-webkit-mask-image:radial-gradient(closest-side,#000 92%,transparent 100%);mask-image:radial-gradient(closest-side,#000 92%,transparent 100%);transition:opacity .3s"></div>
+  <div ref="{{ lanyardRef }}" style="position:absolute;top:0;left:0;right:0;height:calc(100% + 80vh);z-index:1;pointer-events:none"></div>
   <div style="grid-column:1 / span 2;position:relative;z-index:3;pointer-events:none">
     <a href="#" onClick="{{ goHome }}" style="display:block;color:#f4f4f4;text-decoration:none;pointer-events:auto;width:fit-content" data-scramble="">Luca Terenzi</a>
     <div style="color:#f4f4f4" data-scramble="">Graphic Designer</div>
@@ -75,8 +80,8 @@ a{color:inherit}a:hover{color:#aaa}
 </section>
 <main id="works" data-screen-label="Home" style="font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:0 20px 160px">
   <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;align-items:end;padding-top:clamp(40px,6vh,100px);padding-bottom:clamp(24px,1.6vw,40px)">
-    <div style="grid-column:{{ arrowCol }};font-weight:300;font-size:clamp(40px,3.4vw,88px);line-height:1">→</div>
-    <h1 data-scramble="" style="grid-column:{{ titleCol }};margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(52px,4.6vw,120px);line-height:0.9;letter-spacing:-0.02em">Projects</h1>
+    <div style="grid-column:{{ arrowCol }};grid-row:1;font-weight:300;font-size:clamp(40px,3.4vw,88px);line-height:1">→</div>
+    <h1 data-scramble="" style="grid-column:{{ titleCol }};grid-row:1;justify-self:{{ titleSelf }};margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(52px,4.6vw,120px);line-height:0.9;letter-spacing:-0.02em">Projects</h1>
   </div>
 
   <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;row-gap:clamp(60px,5vw,120px);align-items:start">
@@ -164,7 +169,7 @@ a{color:inherit}a:hover{color:#aaa}
   </div>
 </main>
 </sc-if>
-<div ref="{{ footerRef }}" style="overflow:hidden;background:#0b0b0b">
+<div ref="{{ footerRef }}" style="overflow:hidden;background:#121212">
 <footer data-screen-label="Footer" style="opacity:0;transform:translateY(60px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);background:#ff5a00;color:#000;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:20px;display:flex;flex-direction:column;gap:clamp(24px,3vw,60px);letter-spacing:-0.02em">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px 20px;font-size:clamp(14px,1.05vw,20px);line-height:1.15;max-width:60vw;min-width:min(100%,520px)">
     <div style="display:flex;flex-direction:column;min-width:0"><div style="opacity:.45">Index</div><div>Works</div><div>Home</div></div>
@@ -324,7 +329,34 @@ class Component extends DCLogic {
       if (this._lanyEl !== el) return;
       this._lany = m.mountLanyard(el, {
         frontImage: abs('projects/foto-card.jpg'), cardColor: '#ffffff', backImage: front, cornerRadius: 0.35, size: window.innerWidth < 700 ? 0.48 : 0.55, anchor: 'center', strapLength: 0.45,
-        strapColor: '#ff5a00', strapWidth: 0.7, metal: 'silver', finish: 'glossy',
+        strapColor: '#ff5a00', strapWidth: 0.7, metal: 'silver', finish: 'glossy', breeze: 0,
+        onMove: (x, y, view, d) => {
+          const mk = document.getElementById('chromeMask');
+          if (!mk || !d) return;
+          const w = d.w * d.ppu * 1.3, h = d.h * d.ppu * 1.2;
+          mk.style.width = w + 'px'; mk.style.height = h + 'px';
+          mk.style.transform = 'translate(' + (x - w / 2) + 'px,' + (y - h / 2) + 'px)';
+          if (d.back && !this._flipped) { this._flipped = true; ['turnHint', 'turnHintD'].forEach((id) => { const th = document.getElementById(id); if (th) { th.style.transition = 'opacity .6s ease'; th.style.setProperty('opacity', '0', 'important'); } }); }
+          this._mr = [x, y, w, h];
+          this._sp = (this._sp || 0) * 0.85 + Math.min(d.speed, 5) * 0.15;
+          this._spT = performance.now();
+          if (!this._spLoop) {
+            const loop = () => {
+              const mk2 = document.getElementById('chromeMask');
+              if (!mk2) { this._spLoop = 0; return; }
+              if (performance.now() - this._spT > 80) this._sp *= 0.9;
+              const wt = document.getElementById('welcome-text'), ready = wt && parseFloat(getComputedStyle(wt).opacity) > 0.98, sp = !ready || this._sp < 0.05 ? 0 : Math.min(this._sp, 4);
+              const f = sp ? 'blur(' + (sp * 2.2).toFixed(1) + 'px) saturate(' + (1 + sp * 0.6).toFixed(2) + ') hue-rotate(' + (sp * 25).toFixed(0) + 'deg)' : 'none';
+              const ab = document.getElementById('chromeAb'), ai = document.getElementById('chromeAbImg'), r = this._mr;
+              if (ab && ai && r) {
+                if (sp) { const o = (sp * 2.5).toFixed(1); ab.style.clipPath = 'ellipse(' + r[2] / 2 + 'px ' + r[3] / 2 + 'px at ' + r[0] + 'px ' + r[1] + 'px)'; ai.style.filter = 'drop-shadow(' + o + 'px 0 0 #f00) drop-shadow(-' + o + 'px 0 0 #0af)'; ab.style.opacity = '1'; } else ab.style.opacity = '0';
+              }
+              if (f !== this._lf) { this._lf = f; mk2.style.backdropFilter = f; mk2.style.webkitBackdropFilter = f; mk2.style.opacity = sp ? '1' : '0'; }
+              this._spLoop = requestAnimationFrame(loop);
+            };
+            this._spLoop = requestAnimationFrame(loop);
+          }
+        },
       });
     }).catch((e) => console.warn('lanyard', e));
   };
@@ -436,6 +468,7 @@ class Component extends DCLogic {
       galleryCols: `repeat(${gc}, minmax(0, 1fr))`,
       gridCols: `repeat(${cols}, minmax(0, 1fr))`,
       arrowCol: cols === 1 ? '1 / -1' : (cols === 4 ? '1 / span 2' : '1 / span 1'),
+      titleSelf: cols === 1 ? 'end' : 'start',
       titleCol: cols === 1 ? '1 / -1' : (cols === 4 ? '3 / span 2' : '2 / span 1'),
       leftCol: cols === 4 ? '1 / span 2' : '1 / -1',
       rightCol: cols === 4 ? '3 / span 2' : '1 / -1',
