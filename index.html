@@ -22,6 +22,7 @@ a{color:inherit}a:hover{color:#aaa}
 *{box-sizing:border-box}
 </style>
 </helmet>
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:60;pointer-events:none;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22240%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.5%20%200%200%200%200%200.5%20%200%200%200%200%200.5%20%200%200%200%200.9%20-0.15%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E');background-size:240px 240px;mix-blend-mode:overlay;opacity:0.35"></div>
 
 <div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#121212;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
   <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Luca Terenzi</a>
@@ -45,12 +46,12 @@ a{color:inherit}a:hover{color:#aaa}
 </sc-if>
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#121212">
+<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(20px,1.7vw,48px);line-height:1;letter-spacing:-0.03em;color:#f4f4f4;background:#121212">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;color:#f4f4f4;display:flex;align-items:center;justify-content:center;overflow:hidden">
-    <img id="welcome-text" data-fadein="" src="{{ welcomeSrc }}" alt="Welcome to my portfolio!" style="opacity:0;transition:opacity 1.4s ease .5s;display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
+    <img id="welcome-text" data-fadein="" alt="Welcome to my portfolio!" style="opacity:0;transition:opacity 1.4s ease .5s;display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
   </div>
   <div id="chromeAb" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;clip-path:circle(0)">
-    <img id="chromeAbImg" src="{{ welcomeSrc }}" alt="" style="display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
+    <img id="chromeAbImg" alt="" style="display:block;width:auto;height:auto;max-width:94vw;max-height:68vh">
   </div>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
   <div id="turnHintD" data-fadein="" style="position:absolute;left:max(20px,calc(50% - min(41vw,540px)));bottom:11vh;z-index:3;pointer-events:none;color:#ff5a00;font-family:'Caveat',cursive;font-weight:600;opacity:0;transition:opacity 1.2s ease 2.6s;transform:rotate(6deg);transform-origin:left top;width:max-content">
@@ -68,7 +69,7 @@ a{color:inherit}a:hover{color:#aaa}
     <div style="color:#f4f4f4" data-scramble="">Graphic Designer</div>
   </div>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
-  <nav style="grid-column:4 / span 1;justify-self:end;display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;z-index:3">
+  <nav style="grid-column:4 / span 1;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;text-align:right;min-width:0;position:relative;z-index:3">
     <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">About me</a>
     <a href="#works" onClick="{{ scrollWorks }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Works</a>
     <a href="#" onClick="{{ scrollBottom }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a>
@@ -144,7 +145,7 @@ a{color:inherit}a:hover{color:#aaa}
   <div style="display:grid;grid-template-columns:{{ galleryCols }};gap:20px">
     <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
       <div style="grid-column:span {{ g.span }};aspect-ratio:{{ g.ratio }};position:relative;align-self:{{ g.align }};width:100%;height:{{ g.height }};min-height:0;overflow:hidden;border-radius:14px;background:{{ g.bg }};background-image:{{ g.bgImage }};background-size:{{ g.bgSize }};background-repeat:no-repeat;background-position:center;display:flex;align-items:center;justify-content:center;color:#5a5a5a;font-size:clamp(14px,1vw,24px)">
-      <sc-if value="{{ g.video }}" hint-placeholder-val="{{ false }}"><video src="{{ g.video }}" data-auto="" autoplay muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};transform:scale({{ g.vscale }});display:block"></video></sc-if>{{ g.label }}</div>
+      <sc-if value="{{ g.video }}" hint-placeholder-val="{{ false }}"><video src="{{ g.video }}" data-auto="" autoplay muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};object-position:{{ g.vpos }};transform:scale({{ g.vscale }});display:block"></video></sc-if><sc-if value="{{ g.overlay }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background-image:{{ g.overlayBg }};background-size:18% auto;background-repeat:no-repeat;background-position:center;mix-blend-mode:difference;pointer-events:none"></div></sc-if>{{ g.label }}</div>
     </sc-for>
   </div>
 
@@ -237,8 +238,14 @@ const PROJECTS = [
     gallery: [{ video: 'projects/lo-spettacolo-siamo-noi/gallery-1.mp4', span: 4, ratio: '16/9', tall: true },
       { video: 'projects/lo-spettacolo-siamo-noi/gallery-2.mp4', span: 2, ratio: '1862/1044' },
       { img: 'projects/lo-spettacolo-siamo-noi/gallery-3.jpg', span: 2, ratio: '16/9', bgSize: 'cover' }] },
-  { slug: 'lato-studio', size: 'S', title: 'Lato Studio', tags: 'Co-founder', hoverTags: 'Brand Identity, Motion Graphics, Art Direction', cover: 'projects/lato-studio/cover.jpg', bg: '#5c0aff',
-    intro: 'Co-founder of Lato Studio, a YouTube agency.', details: ['Describe the project here.'], software: 'Adobe Illustrator.', gallery: [] },
+  { slug: 'lato-studio', size: 'S', title: 'Lato Studio', tags: 'Co-founder, Art Direction, Website, UX/UI, Brand Identity, Social Media', hoverTags: 'Art Direction, Website, UX/UI, Brand Identity, Social Media', cover: 'projects/lato-studio/cover.jpg', bg: '#5c0aff',
+    heroVideo: 'projects/lato-studio/hero.mp4', heroRatio: '16/9',
+    intro: 'Co-founder of Lato Studio, a creative studio working on art direction, web design and brand identity.', details: ['As co-founder of Lato Studio, I lead the creative direction across every project: from the first brand identity to the final website, shaping a consistent visual language across UX/UI, digital platforms and social media content.'], software: 'Adobe Illustrator, Adobe Photoshop, Adobe After Effects, Figma.', gallery: [
+      { img: 'projects/lato-studio/gallery-4.png', span: 4, ratio: '2576/1094', natural: true, bgSize: 'cover' },
+      { video: 'projects/lato-studio/gallery-2.mp4', span: 2, ratio: '16/9', natural: true, fit: 'cover', vscale: 1.06 },
+      { video: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260210_031346_d87182fb-b0af-4273-84d1-c6fd17d6bf0f.mp4', span: 2, ratio: '1/1', stretch: true, fit: 'cover', overlay: 'projects/lato-studio/overlay.png' },
+      { img: 'projects/lato-studio/gallery-3.jpg', span: 2, ratio: '1672/941', natural: true, bgSize: 'cover' },
+      { video: 'projects/lato-studio/gallery-5.mp4', span: 2, ratio: '1672/941', natural: true, fit: 'cover', vpos: '50% 15%' }] },
   { slug: 'saveeat', size: 'S', title: 'SaveEat', tags: 'Brand Identity, UX/UI', cover: 'projects/saveeat/cover.png', bg: '#1f6b5c',
     heroVideo: 'projects/saveeat/hero.mp4', heroRatio: '16/9', heroTitle: 'Saveeat',
     intro: 'An academic project focused on sustainable branding and eco-conscious behavior in the food industry.',
@@ -303,6 +310,7 @@ class Component extends DCLogic {
     this._lanyEl = el;
     if (!el) return;
     const root = window.__ROOT || '';
+    const wt = document.getElementById('welcome-text'); if (wt && !wt.getAttribute('src')) wt.setAttribute('src', root + 'projects/welcome.png');
     const abs = (p) => new URL(root + p, location.href).href;
     const face = async () => {
       try { await Promise.all([document.fonts.load("500 150px 'PP Neue Montreal'"), document.fonts.load("italic 400 300px 'Instrument Serif'")]); } catch (e) {}
@@ -349,6 +357,7 @@ class Component extends DCLogic {
               const wt = document.getElementById('welcome-text'), ready = wt && parseFloat(getComputedStyle(wt).opacity) > 0.98, sp = !ready || this._sp < 0.05 ? 0 : Math.min(this._sp, 4);
               const f = sp ? 'blur(' + (sp * 2.2).toFixed(1) + 'px) saturate(' + (1 + sp * 0.6).toFixed(2) + ') hue-rotate(' + (sp * 25).toFixed(0) + 'deg)' : 'none';
               const ab = document.getElementById('chromeAb'), ai = document.getElementById('chromeAbImg'), r = this._mr;
+              if (ai && !ai.getAttribute('src')) ai.setAttribute('src', (window.__ROOT || '') + 'projects/welcome.png');
               if (ab && ai && r) {
                 if (sp) { const o = (sp * 2.5).toFixed(1); ab.style.clipPath = 'ellipse(' + r[2] / 2 + 'px ' + r[3] / 2 + 'px at ' + r[0] + 'px ' + r[1] + 'px)'; ai.style.filter = 'drop-shadow(' + o + 'px 0 0 #f00) drop-shadow(-' + o + 'px 0 0 #0af)'; ab.style.opacity = '1'; } else ab.style.opacity = '0';
               }
@@ -484,7 +493,6 @@ class Component extends DCLogic {
         move: (e) => { const r = e.currentTarget.getBoundingClientRect(); const v = e.currentTarget.querySelector('video'); if (v && v.paused) { v.muted = true; v.volume = 0; v.currentTime = 0; v.play().catch(() => {}); } this.setState(s => ({ hover: pr.slug, lastKey: s.hover === pr.slug ? s.lastKey : { ...s.lastKey, [pr.slug]: Date.now() }, mx: e.clientX - r.left, my: e.clientY - r.top })); },
         leave: (e) => { const v = e.currentTarget.querySelector('video'); if (v) setTimeout(() => { if (this.state.hover !== pr.slug) v.pause(); }, 1300); this.setState({ hover: null }); },
       })),
-      welcomeSrc: R('projects/welcome.png'),
       isHome: i < 0,
       isProject: i >= 0,
       p: {
@@ -496,7 +504,7 @@ class Component extends DCLogic {
         heroFit: p.heroFit || 'contain',
         bg: p.heroBg || (p.heroVideo ? '#000' : p.bg),
       },
-      gallery: (p.gallery && p.gallery.length ? p.gallery : [[2, 1], [2, 2], [1, 3], [1, 4], [2, 5]].map(([s, n]) => ({ img: '', span: s, ratio: n <= 2 ? '4/5' : '9/16', tall: n <= 2, fill: n === 5, label: `projects/${p.slug}/gallery-${n}.png` }))).map(g => ({ label: '', video: '', bg: '#000', fit: 'contain', bgSize: 'contain', vscale: 1, ...g, height: gc === 4 && !g.natural ? `${Math.round((document.documentElement.clientWidth - 100) / 4 * 16 / 9)}px` : 'auto', align: 'start', ratio: gc === 4 && !g.natural ? 'auto' : g.ratio, span: gfit(g.span), video: R(g.video), bgImage: url(g.img) })),
+      gallery: (p.gallery && p.gallery.length ? p.gallery : [[2, 1], [2, 2], [1, 3], [1, 4], [2, 5]].map(([s, n]) => ({ img: '', span: s, ratio: n <= 2 ? '4/5' : '9/16', tall: n <= 2, fill: n === 5, label: `projects/${p.slug}/gallery-${n}.png` }))).map(g => ({ label: '', video: '', overlay: '', vpos: 'center', bg: '#000', fit: 'contain', bgSize: 'contain', vscale: 1, ...g, height: g.stretch && gc === 4 ? 'auto' : gc === 4 && !g.natural ? `${Math.round((document.documentElement.clientWidth - 100) / 4 * 16 / 9)}px` : 'auto', align: g.stretch && gc === 4 ? 'stretch' : 'start', ratio: gc === 4 && (!g.natural || g.stretch) ? 'auto' : g.ratio, span: gfit(g.span), video: R(g.video), overlayBg: url(g.overlay), bgImage: url(g.img) })),
       goHome: this.nav('home'),
       lanyardRef: this.lanyardRef,
       footerRef: this.footerRef,
