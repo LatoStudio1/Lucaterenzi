@@ -1,0 +1,4 @@
+Cartella del progetto "globetrotter".
+
+- cover.png  → immagine della card in home
+- hover.gif  → GIF che parte quando passi sopra la card (mettila qui con questo nome esatto)

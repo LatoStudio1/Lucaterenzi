@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>window.__MULTI=1;window.__VIEW='umbria-jazz';window.__ROOT='../';</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Neue Montreal';src:url('../fonts/PPNeueMontreal-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Pixelify Sans';src:url('../fonts/PixelifySans-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+html,body{margin:0;background:#0b0b0b;color:#f4f4f4;-webkit-font-smoothing:antialiased}
+a{color:inherit}a:hover{color:#aaa}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="position:fixed;top:0;left:0;right:0;z-index:25;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(18px,1.35vw,36px);line-height:1;letter-spacing:-0.02em;transform:translateY({{ navY }});transition:transform .5s cubic-bezier(.22,.61,.36,1)">
+  <a href="#" onClick="{{ toTop }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Luca Terenzi</a>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><a href="#" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a></sc-if>
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><a href="#" onClick="{{ openMenu }}" style="color:#f4f4f4;text-decoration:none">Menu</a></sc-if>
+</div>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:40;background:#0b0b0b;color:#f4f4f4;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:20px;letter-spacing:-0.035em">
+  <div style="display:flex;justify-content:space-between;font-size:18px;line-height:1;letter-spacing:-0.02em">
+    <span>Luca Terenzi</span>
+    <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">Close</a>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;font-size:clamp(44px,15vw,88px);line-height:0.98">
+    <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">About me</a>
+    <a href="#works" onClick="{{ menuWorks }}" style="color:#f4f4f4;text-decoration:none">Works</a>
+    <a href="#" onClick="{{ closeMenu }}" style="color:#f4f4f4;text-decoration:none">Contacts</a>
+  </div>
+  <div style="font-size:18px;line-height:1;letter-spacing:-0.02em;color:#8a8a8a">Graphic Designer</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Banner" style="position:relative;height:100vh;min-height:520px;padding:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:20px;align-content:start;font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(28px,2.55vw,72px);line-height:0.98;letter-spacing:-0.035em;color:#f4f4f4;background:#0b0b0b">
+  <div ref="{{ lanyardRef }}" style="position:absolute;inset:0;z-index:0;overflow:hidden"></div>
+  <div style="grid-column:1 / span 2;position:relative;z-index:1;pointer-events:none">
+    <a href="#" onClick="{{ goHome }}" style="display:block;color:#f4f4f4;text-decoration:none;pointer-events:auto;width:fit-content" data-scramble="">Luca Terenzi</a>
+    <div style="color:#f4f4f4" data-scramble="">Graphic Designer</div>
+  </div>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+  <nav style="grid-column:4 / span 1;justify-self:end;display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;z-index:1">
+    <a href="#" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">About me</a>
+    <a href="#works" onClick="{{ scrollWorks }}" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Works</a>
+    <a href="#" style="color:#f4f4f4;text-decoration:none" style-hover="color:#8a8a8a">Contacts</a>
+  </nav>
+  </sc-if>
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+  <a href="#" onClick="{{ openMenu }}" style="position:relative;z-index:1;grid-column:3 / span 2;justify-self:end;color:#f4f4f4;text-decoration:none">Menu</a>
+  </sc-if>
+</section>
+<main id="works" data-screen-label="Home" style="font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:0 20px 160px">
+  <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;align-items:end;padding-top:clamp(40px,6vh,100px);padding-bottom:clamp(24px,1.6vw,40px)">
+    <div style="grid-column:{{ arrowCol }};font-weight:300;font-size:clamp(40px,3.4vw,88px);line-height:1">→</div>
+    <h1 data-scramble="" style="grid-column:{{ titleCol }};margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(52px,4.6vw,120px);line-height:0.9;letter-spacing:-0.02em">Projects</h1>
+  </div>
+
+  <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;row-gap:clamp(60px,5vw,120px);align-items:start">
+    <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+      <a href="#" onClick="{{ c.open }}" style="grid-column:span {{ c.span }};min-width:0;text-decoration:none;color:#f4f4f4;display:flex;flex-direction:column;gap:clamp(12px,1.2vw,30px)">
+        <div onMouseMove="{{ c.move }}" onMouseLeave="{{ c.leave }}" style="position:relative;overflow:hidden;aspect-ratio:{{ c.ratio }};background:{{ c.bg }};border-radius:14px;cursor:none">
+          <div style="width:100%;height:100%;background-image:{{ c.bgImage }};background-size:cover;background-position:center;transition:transform 1.2s cubic-bezier(.22,.61,.36,1);transform:scale({{ c.scale }})"></div>
+          <video src="../projects/{{ c.slug }}/hover.mp4" muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:{{ c.op }};transform:scale({{ c.vScale }});transition:opacity 1.1s cubic-bezier(.4,0,.2,1) .12s,transform 1.4s cubic-bezier(.22,.61,.36,1)"></video>
+          <div style="position:absolute;inset:0;background-image:{{ c.gifImage }};background-size:cover;background-position:center;pointer-events:none;opacity:{{ c.op }};transition:opacity .7s ease"></div>
+          <div style="position:absolute;left:{{ c.x }}px;top:{{ c.y }}px;display:flex;gap:4px;pointer-events:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:clamp(12px,0.8vw,18px);letter-spacing:0.04em;color:#111;opacity:{{ c.op }};transform:translate(-50%,-50%) scale({{ c.labelScale }});transition:opacity .6s ease,transform .7s cubic-bezier(.22,.61,.36,1)">
+            <div style="background:#fff;border-radius:4px;padding:0.9em 1.1em;line-height:1">DISCOVER</div>
+            <div style="background:#fff;border-radius:4px;padding:0.9em 0.95em;line-height:1">↘</div>
+          </div>
+          <div style="position:absolute;right:clamp(12px,1.2vw,28px);bottom:clamp(12px,1.2vw,28px);left:clamp(12px,1.2vw,28px);display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;pointer-events:none;opacity:{{ c.op }};transform:translateY({{ c.chipY }}px);transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)">
+            <sc-for list="{{ c.tagList }}" as="t" hint-placeholder-count="2">
+              <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:clamp(11px,0.75vw,17px);letter-spacing:0.04em;text-transform:uppercase;color:#fff;padding:0.95em 1.1em;line-height:1;border:1px solid rgba(255,255,255,0.22);border-radius:4px;background:rgba(0,0,0,0.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">{{ t }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:clamp(18px,1.35vw,36px);line-height:1.05;letter-spacing:-0.01em" data-scramble="">{{ c.title }}</div>
+          <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(17px,1.2vw,32px);line-height:1.1" data-scramble="">{{ c.tags }}</div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isProject }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Project" style="font-family:'PP Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;padding:0 20px 160px">
+  <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;row-gap:24px;padding-top:clamp(80px,6.5vw,170px);padding-bottom:clamp(60px,5.5vw,140px)">
+    <div style="grid-column:{{ leftCol }}">
+      <h1 style="margin:0;font-weight:400;font-size:clamp(30px,2.3vw,60px);line-height:1;letter-spacing:-0.02em" data-scramble="">{{ p.title }}</h1>
+      <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(24px,1.75vw,46px);line-height:1.1" data-scramble="">{{ p.tags }}</div>
+    </div>
+    <p style="grid-column:{{ rightCol }};margin:0;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(24px,1.75vw,46px);line-height:1.05;text-wrap:pretty;white-space:pre-line" data-scramble="">{{ p.intro }}</p>
+  </div>
+
+  <div style="aspect-ratio:{{ p.heroRatio }};position:relative;overflow:hidden;border-radius:14px;background:{{ p.bg }};background-image:{{ p.heroImage }};background-size:{{ p.heroFit }};background-position:center;background-repeat:no-repeat">
+    <sc-if value="{{ p.heroVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ p.heroVideo }}" data-auto="" data-fadein="" autoplay muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;filter:{{ p.heroFilter }};transition:opacity 1.6s ease"></video></sc-if>
+    <sc-if value="{{ p.heroTitle }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;mix-blend-mode:difference;color:#fff;opacity:0;transition:opacity 1.8s ease .5s;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(56px,14vw,330px);line-height:1;letter-spacing:-0.02em" data-fadein="" data-scramble="">{{ p.heroTitle }}</div></sc-if>
+  </div>
+
+  <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;padding:clamp(24px,2vw,50px) 0 20px">
+    <div style="grid-column:{{ rightCol }};display:flex;flex-direction:column;justify-content:space-between;gap:clamp(40px,5vw,120px);min-height:clamp(340px,32vw,620px)">
+      <div style="display:flex;flex-direction:column;gap:clamp(8px,0.8vw,20px)">
+        <div style="color:#8a8a8a;font-size:clamp(17px,1.1vw,28px)" data-scramble="">Details</div>
+        <sc-for list="{{ p.details }}" as="para" hint-placeholder-count="2">
+          <p style="margin:0 0 clamp(14px,1.4vw,34px);max-width:30em;font-size:clamp(18px,1.4vw,36px);line-height:1.02;text-wrap:pretty" data-scramble="">{{ para }}</p>
+        </sc-for>
+      </div>
+      <div>
+        <div style="color:#8a8a8a;font-size:clamp(17px,1.1vw,28px)" data-scramble="">Softwares used</div>
+        <div style="font-size:clamp(18px,1.4vw,36px);line-height:1.1" data-scramble="">{{ p.software }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:{{ galleryCols }};gap:20px">
+    <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+      <div style="grid-column:span {{ g.span }};aspect-ratio:{{ g.ratio }};position:relative;align-self:{{ g.align }};width:100%;height:{{ g.height }};min-height:0;overflow:hidden;border-radius:14px;background:{{ g.bg }};background-image:{{ g.bgImage }};background-size:{{ g.bgSize }};background-repeat:no-repeat;background-position:center;display:flex;align-items:center;justify-content:center;color:#5a5a5a;font-size:clamp(14px,1vw,24px)">
+      <sc-if value="{{ g.video }}" hint-placeholder-val="{{ false }}"><video src="{{ g.video }}" data-auto="" autoplay muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};transform:scale({{ g.vscale }});display:block"></video></sc-if>{{ g.label }}</div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ p.hasManifesto }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Manifesto" style="margin-top:clamp(70px,7vw,170px)">
+    <div style="display:grid;grid-template-columns:{{ gridCols }};column-gap:20px;padding-bottom:clamp(18px,1.6vw,40px)">
+      <div style="grid-column:{{ leftCol }};color:#8a8a8a;font-size:clamp(17px,1.1vw,28px)" data-scramble="">Manifesto</div>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ galleryCols }};gap:20px">
+      <sc-for list="{{ manifesto }}" as="s" hint-placeholder-count="4">
+        <div style="grid-column:span {{ s.span }};aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#000">
+          <canvas data-pdfpage="{{ s.page }}" style="width:100%;height:100%;display:block"></canvas>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding-top:clamp(80px,8vw,200px)">
+    <a href="#" onClick="{{ goHome }}" style="color:#f4f4f4;text-decoration:none;font-size:clamp(18px,1.35vw,36px)" style-hover="color:#aaa">← All projects</a>
+    
+  </div>
+</main>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+/*
+  GRID SYSTEM
+  - 4 columns (desktop ≥1100px) · 2 columns (tablet ≥640px) · 1 column (mobile)
+  - 20px gutter, 20px outer margin
+  - Home cards: size "S" = 1 column, 1:1  ·  size "L" = 2 columns, 4:3
+  - Project gallery: span 2 = half width, span 4 = full width; ratio is any CSS aspect-ratio ("4/3", "16/9", "4/5"…)
+  - Text: title/tags on columns 1–2, description + details on columns 3–4
+
+  TO ADD A PROJECT: copy an object in PROJECTS, give it a unique slug, create /projects/<slug>/ with cover.png and hover.mp4 (or hover.gif).
+  The hover GIF is loaded automatically from projects/<slug>/hover.gif (restarts on every hover).
+  Order in the array = order on the home grid. Mix sizes so each row sums to 4 columns (L+S+S, S+S+L, L+L, S+S+S+S).
+*/
+const PROJECTS = [
+  { slug: 'art-of-disobedience', size: 'L', title: 'The Art Of Disobedience', tags: 'Brand Identity, Motion Graphics, Social Media',
+    cover: '../projects/art-of-disobedience/cover.png', bg: '#0d2a2c',
+    intro: 'Visual identity, motion graphics, and social media content for the documentary "The Art Of Disobedience" exploring the rebellious world of graffiti through the story of Geco.',
+    heroVideo: '../projects/art-of-disobedience/hero.mp4', heroRatio: '640/480',
+    details: [
+      'THE ART OF DISOBEDIENCE is an adrenaline-filled journey into the world of graffiti writing through the eyes of Geco, one of the most famous and prolific writers in Europe. With extraordinary determination and a distinctive style, he has turned his art into an act of defiance against rules and social conventions.',
+      'I crafted the graphic identity, making all the motion graphics for the documentary and creating the social media strategy and graphics. Helped with the creation of the website, editing the pictures and any graphic related stuff.',
+    ],
+    software: 'Adobe After Effects, Adobe Photoshop, Adobe Illustrator.',
+    gallery: [
+      { img: '../projects/art-of-disobedience/gallery-0.webp', span: 2, ratio: '1080/1350', natural: true, bgSize: 'cover' },
+      { video: '../projects/art-of-disobedience/gallery-00.mp4', span: 2, ratio: '1080/1350', natural: true, fit: 'cover' },
+      { img: '../projects/art-of-disobedience/gallery-1.webp', span: 4, ratio: '3780/1608', natural: true },
+      { img: '../projects/art-of-disobedience/gallery-2.webp', span: 2, ratio: '4/3' },
+      { img: '../projects/art-of-disobedience/gallery-3.webp', span: 2, ratio: '4/3' },
+      { img: '../projects/art-of-disobedience/gallery-6.webp', span: 2, ratio: '1080/1076', natural: true },
+      { img: '../projects/art-of-disobedience/gallery-5.webp', span: 2, ratio: '1080/1076', natural: true, bgSize: 'cover' },
+      { img: '../projects/art-of-disobedience/gallery-4.webp', span: 2, ratio: '1556/1980', natural: true },
+      { video: '../projects/art-of-disobedience/gallery-04.mp4', span: 2, ratio: '1556/1980', natural: true, fit: 'cover' },
+    ] },
+  { slug: 'byld-studio', size: 'S', title: 'Byld Studio', tags: 'Co-founder', cover: '../projects/byld-studio/cover.png', bg: '#000', manifesto: true,
+    heroTitle: 'Byld Studio',
+    intro: 'Co-founder of Byld Studio.', details: ['BYLD Studio is a Rome-based graphic design studio. We focus on a creative, authentic, and innovative communication, transforming ideas into unique projects that create value and identity.'], software: 'Adobe Illustrator, Photoshop, InDesign, Blender, Figma',
+    // 4-column grid, two formats only: span 2 (half) or span 1 (quarter). Each row must sum to 4.
+    gallery: [
+      { video: '../projects/byld-studio/gallery-1.mp4', span: 2, ratio: '4/5', tall: true },
+      { video: '../projects/byld-studio/gallery-2.mp4', span: 2, ratio: '4/5', tall: true },
+      { video: '../projects/byld-studio/gallery-4.mp4', span: 1, ratio: '9/16' },
+      { video: '../projects/byld-studio/gallery-5.mp4', span: 1, ratio: '9/16' },
+      { video: '../projects/byld-studio/gallery-3.mp4', span: 2, ratio: '4/5', fill: true }, // tall = same height as a 9:16 quarter tile, cropped & centered; fill = takes the row height of its neighbours, video cropped & centered
+      { video: '../projects/byld-studio/gallery-6.mp4', span: 1, ratio: '9/16' },
+      { video: '../projects/byld-studio/hero.mp4', span: 1, ratio: '9/16', bg: '#000', fit: 'contain', vscale: 0.6 },
+    ] },
+  { slug: 'lo-spettacolo-siamo-noi', size: 'S', title: 'Lo spettacolo siamo noi', tags: 'Motion Graphics', cover: '../projects/lo-spettacolo-siamo-noi/cover.png', bg: '#3a6f9a',
+    heroVideo: '../projects/lo-spettacolo-siamo-noi/hero.mp4', heroRatio: '16/9',
+    intro: 'A documentary exploring the spirit, history, and contradictions of the Orbetello ultras.\n\nDirected by Barbara Di Lieto, the film captures the raw energy and deep-rooted identity of the town’s most devoted supporters.', details: ['Design and animation of the opening sequence for a sports documentary, including custom sound effects and lower-third graphics. A cohesive visual and audio introduction that sets the tone and identity of the film from the very first frame.', 'The visuals are built around blue, the color of the city, and the wind, a defining element of its landscape, creating a bold, atmospheric introduction to the story.'], software: 'Adobe After Effects.',
+    gallery: [{ video: '../projects/lo-spettacolo-siamo-noi/gallery-1.mp4', span: 4, ratio: '16/9', tall: true },
+      { video: '../projects/lo-spettacolo-siamo-noi/gallery-2.mp4', span: 2, ratio: '1862/1044' },
+      { img: '../projects/lo-spettacolo-siamo-noi/gallery-3.jpg', span: 2, ratio: '16/9', bgSize: 'cover' }] },
+  { slug: 'lato-studio', size: 'S', title: 'Lato Studio', tags: 'Co-founder', hoverTags: 'Brand Identity, Motion Graphics, Art Direction', cover: '../projects/lato-studio/cover.jpg', bg: '#5c0aff',
+    intro: 'Co-founder of Lato Studio, a YouTube agency.', details: ['Describe the project here.'], software: 'Adobe Illustrator.', gallery: [] },
+  { slug: 'saveeat', size: 'S', title: 'SaveEat', tags: 'Brand Identity, UX/UI', cover: '../projects/saveeat/cover.png', bg: '#1f6b5c',
+    heroVideo: '../projects/saveeat/hero.mp4', heroRatio: '16/9', heroTitle: 'Saveeat',
+    intro: 'An academic project focused on sustainable branding and eco-conscious behavior in the food industry.',
+    details: [
+      'A branding and marketing project developed for Saveeat, an eco-friendly doggy bag designed to encourage sustainable behavior in restaurants.',
+      'The work included full brand identity development, naming, logo design, tone of voice and visual layout, along with a communication strategy focused on environmental impact. From the USP to key benefits, the project was supported by real data on food waste in Italy.',
+      'A project that combines design and social impact, turning a simple gesture, taking leftovers home, into a shared habit for a better planet.',
+    ],
+    software: 'Adobe Illustrator, Adobe Photoshop, Adobe Dimension',
+    gallery: [
+      { img: '../projects/saveeat/gallery-1.png', span: 4, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-2.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-3.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-4.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-5.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-6.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-7.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-8.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-9.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-10.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-11.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-12.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-13.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-14.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-15.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-16.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-17.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-18.png', span: 2, ratio: '1921/1080', natural: true },
+      { img: '../projects/saveeat/gallery-19.png', span: 2, ratio: '1921/1080', natural: true },
+    ] },
+  { slug: 'project-name', size: 'L', title: 'Project name', tags: 'Category', cover: '', bg: 'linear-gradient(135deg,#e100e6,#ff3fd0)',
+    intro: 'Short project description.', details: ['Describe the project here.'], software: '—', gallery: [] },
+  { slug: 'globetrotter', size: 'L', title: 'Globetrotter', tags: 'Brand Identity, UX/UI, Motion Graphics', cover: '../projects/globetrotter/cover.png', bg: '#22111a',
+    intro: 'Brand identity, app design and motion for Globetrotter.', details: ['Describe the project here.'], software: 'Figma, Adobe After Effects, Adobe Illustrator.', gallery: [] },
+  { slug: 'loacker-finger', size: 'S', title: 'Loacker Finger', tags: 'Brand Identity, Art Direction, 3d design, die-cut design', cover: '../projects/loacker-finger/cover.png', bg: '#c0121e',
+    intro: 'Brand identity and packaging concept for Loacker Finger.', details: ['Loacker Finger reinvents the traditional wafer experience by introducing a cardboard pack with a dedicated finger space to easily lift each piece.', 'The project includes a total rebrand, custom die-line, outer sleeve, and friendly textures based on doodles to create a playful and engaging tone.', 'From packaging engineering to billboard mockups, the work merges creativity with functional thinking.'], software: 'Adobe Illustrator, Adobe Photoshop, Adobe Dimension', gallery: [] },
+  { slug: 'umbria-jazz', size: 'S', title: 'Umbria Jazz', tags: 'Brand Identity, Art Direction', cover: '../projects/umbria-jazz/cover.png', bg: '#0a0a0a',
+    intro: 'Brand identity and art direction for Umbria Jazz.', details: ['Describe the project here.'], software: 'Adobe Illustrator, Adobe Photoshop.', gallery: [] },
+];
+
+const SIZES = { S: { span: 1, ratio: '1/1' }, L: { span: 2, ratio: '4/3' } };
+const url = (src) => (src ? `url("${src}")` : 'none');
+const readHash = () => (window.__MULTI ? window.__VIEW : ((location.hash || '').replace('#/', '') || 'home'));
+const urlOf = (s) => s.replace(/-/g, '');
+
+class Component extends DCLogic {
+  lanyardRef = (el) => {
+    if (this._lanyEl === el) return;
+    if (this._lany) { this._lany.destroy(); this._lany = null; }
+    this._lanyEl = el;
+    if (!el) return;
+    const root = window.__ROOT || '';
+    const abs = (p) => new URL(root + p, location.href).href;
+    const face = async () => {
+      try { await Promise.all([document.fonts.load("500 150px 'PP Neue Montreal'"), document.fonts.load("italic 400 300px 'Instrument Serif'")]); } catch (e) {}
+      const c = document.createElement('canvas'); c.width = 1024; c.height = 1440;
+      const g = c.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, 1024, 1440); g.fillStyle = '#fff';
+      g.font = "500 150px 'PP Neue Montreal', Helvetica, Arial, sans-serif"; g.fillText('TEST', 80, 1000);
+      g.font = "italic 400 300px 'Instrument Serif', Georgia, serif"; g.fillText('Luca', 80, 1230);
+      g.font = "500 150px 'PP Neue Montreal', Helvetica, Arial, sans-serif"; g.fillText('PORTFOLIO', 80, 1370);
+      return c.toDataURL('image/png');
+    };
+    Promise.all([import(abs('lanyard.js')), face()]).then(([m, front]) => {
+      if (this._lanyEl !== el) return;
+      this._lany = m.mountLanyard(el, {
+        frontImage: front, cardColor: '#000000', backImage: abs('../projects/foto-card.jpg'), cornerRadius: 0.35, size: 0.55, anchor: 'center', strapLength: 0.45,
+        strapColor: '#ff5a00', strapWidth: 0.7, metal: 'silver', finish: 'glossy',
+      });
+    }).catch((e) => console.warn('lanyard', e));
+  };
+  state = { view: readHash(), w: window.innerWidth, hover: null, mx: 0, my: 0, lastKey: {}, navOn: false, menuOpen: false };
+  componentDidMount() {
+    this.setupScramble();
+    this._s = () => {
+      const n = document.querySelector('[data-screen-label="Banner"] nav');
+      const on = !!n && n.getBoundingClientRect().bottom < 0;
+      if (on !== this.state.navOn) this.setState({ navOn: on });
+    };
+    window.addEventListener('scroll', this._s, { passive: true });
+    this._h = () => this.setState({ view: readHash() });
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('hashchange', this._h);
+    window.addEventListener('popstate', this._h);
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._s);
+    this._io && this._io.disconnect();
+    this._mo && this._mo.disconnect();
+    window.removeEventListener('hashchange', this._h);
+    window.removeEventListener('popstate', this._h);
+    window.removeEventListener('resize', this._r);
+  }
+  // Scramble-in: text resolves from its own shuffled letters when it scrolls into view
+  setupScramble() {
+    const run = (el) => {
+      const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      let node = null, n;
+      while ((n = tw.nextNode())) { if (n.nodeValue.trim()) { node = n; break; } }
+      if (!node) return;
+      const final = node.nodeValue;
+      const pool = final.replace(/\s/g, '').split('');
+      const total = Math.min(1100, 350 + final.length * 28);
+      const t0 = performance.now();
+      const tick = (now) => {
+        const k = Math.min(1, (now - t0) / total);
+        const revealed = Math.floor(k * final.length);
+        let out = '';
+        for (let i = 0; i < final.length; i++) {
+          const ch = final[i];
+          out += (i < revealed || ch === ' ') ? ch : pool[(Math.random() * pool.length) | 0];
+        }
+        node.nodeValue = k < 1 ? out : final;
+        if (k < 1) setTimeout(() => tick(performance.now()), 45);
+      };
+      tick(performance.now());
+    };
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { this._io.unobserve(e.target); run(e.target); } });
+    }, { threshold: 0.25 });
+    const scan = () => document.querySelectorAll('[data-scramble]:not([data-scr-done])').forEach(el => {
+      if (!el.textContent.trim()) return;
+      el.setAttribute('data-scr-done', '');
+      if (el.getBoundingClientRect().top < window.innerHeight) this._io.observe(el);
+    });
+    const pdfs = async () => {
+      const cs = [...document.querySelectorAll('canvas[data-pdfpage]:not([data-pdf-done])')];
+      if (!cs.length) return;
+      cs.forEach(c => c.setAttribute('data-pdf-done', ''));
+      try {
+        const lib = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');
+        lib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+        this._pdf = this._pdf || lib.getDocument('../projects/byld-studio/manifesto.pdf').promise;
+        const doc = await this._pdf;
+        for (const c of cs) {
+          const pg = await doc.getPage(+c.getAttribute('data-pdfpage'));
+          const vp0 = pg.getViewport({ scale: 1 });
+          const sc = Math.min(2, (c.parentElement.clientWidth * (window.devicePixelRatio || 1) * 1.2) / vp0.width);
+          const vp = pg.getViewport({ scale: sc });
+          c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+          await pg.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+        }
+      } catch (err) { console.warn('manifesto pdf', err); cs.forEach(c => c.removeAttribute('data-pdf-done')); }
+    };
+    const vids = () => document.querySelectorAll('video[data-auto]').forEach(v => { v.loop = true; v.defaultMuted = true; v.muted = true; v.volume = 0; if (v.paused) v.play().catch(() => {}); });
+    const fades = () => document.querySelectorAll('[data-fadein]').forEach(el => {
+      if (el.__fi) return; el.__fi = 1;
+      const show = () => { el.style.opacity = '1'; };
+      if (el.tagName === 'VIDEO') { if (el.readyState >= 2) show(); else el.addEventListener('loadeddata', show, { once: true }); setTimeout(show, 3000); }
+      else setTimeout(show, 400);
+    });
+    scan(); vids(); pdfs(); fades();
+    this._mo = new MutationObserver(() => { scan(); vids(); pdfs(); fades(); });
+    this._mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+  }
+  nav(slug) {
+    return (e) => {
+      if (e) e.preventDefault();
+      if (window.__MULTI) { const idx = /\.html$|^file:|claudeusercontent|localhost|127\.0\.0\.1/.test(location.href) ? 'index.html' : ''; location.href = (window.__ROOT || './') + (slug === 'home' ? '' : urlOf(slug) + '/') + idx; return; }
+      history.pushState(null, '', slug === 'home' ? location.pathname + location.search : '#/' + slug);
+      this.setState({ view: slug });
+      window.scrollTo(0, 0);
+    };
+  }
+  renderVals() {
+    const cols = this.state.w >= 1100 ? 4 : this.state.w >= 640 ? 2 : 1;
+    const fit = (n) => Math.min(n, cols);
+    const gc = this.state.w >= 760 ? 4 : this.state.w >= 640 ? 2 : 1;
+    const gfit = (n) => Math.min(n, gc);
+    const half = cols === 4 ? 'span 2' : '1 / -1';
+    const i = PROJECTS.findIndex(p => p.slug === this.state.view);
+    const p = PROJECTS[Math.max(i, 0)];
+    const next = PROJECTS[(Math.max(i, 0) + 1) % PROJECTS.length];
+    return {
+      manifesto: [1, 2, 3, 4].map(page => ({ page, span: gfit(2) })),
+      galleryCols: `repeat(${gc}, minmax(0, 1fr))`,
+      gridCols: `repeat(${cols}, minmax(0, 1fr))`,
+      arrowCol: cols === 1 ? '1 / -1' : (cols === 4 ? '1 / span 2' : '1 / span 1'),
+      titleCol: cols === 1 ? '1 / -1' : (cols === 4 ? '3 / span 2' : '2 / span 1'),
+      leftCol: cols === 4 ? '1 / span 2' : '1 / -1',
+      rightCol: cols === 4 ? '3 / span 2' : '1 / -1',
+      cards: PROJECTS.map(pr => ({
+        ...pr, span: fit(SIZES[pr.size].span), ratio: SIZES[pr.size].ratio,
+        bgImage: url(pr.cover), open: this.nav(pr.slug),
+        gifImage: this.state.hover === pr.slug ? url(`../projects/${pr.slug}/hover.gif?h=${this.state.lastKey[pr.slug] || 0}`) : (this.state.lastKey[pr.slug] ? url(`../projects/${pr.slug}/hover.gif?h=${this.state.lastKey[pr.slug]}`) : 'none'),
+        tagList: (pr.hoverTags || pr.tags).split(',').map(t => t.trim()).filter(Boolean),
+        ...(this.state.hover === pr.slug
+          ? { vScale: 1, op: 1, x: this.state.mx, y: this.state.my, scale: 1.025, labelScale: 1, chipY: 0 }
+          : { vScale: 1.05, op: 0, x: this.state.mx, y: this.state.my, scale: 1, labelScale: 0.85, chipY: 6 }),
+        move: (e) => { const r = e.currentTarget.getBoundingClientRect(); const v = e.currentTarget.querySelector('video'); if (v && v.paused) { v.muted = true; v.volume = 0; v.currentTime = 0; v.play().catch(() => {}); } this.setState(s => ({ hover: pr.slug, lastKey: s.hover === pr.slug ? s.lastKey : { ...s.lastKey, [pr.slug]: Date.now() }, mx: e.clientX - r.left, my: e.clientY - r.top })); },
+        leave: (e) => { const v = e.currentTarget.querySelector('video'); if (v) setTimeout(() => { if (this.state.hover !== pr.slug) v.pause(); }, 1300); this.setState({ hover: null }); },
+      })),
+      isHome: i < 0,
+      isProject: i >= 0,
+      p: {
+        ...p,
+        hasManifesto: !!p.manifesto,
+        heroFilter: p.heroTitle ? 'brightness(0.6)' : 'none',
+        heroImage: p.heroVideo ? 'none' : url(p.hero || p.cover),
+        heroRatio: p.heroRatio || '16/8',
+        heroFit: p.heroFit || 'contain',
+        bg: p.heroBg || (p.heroVideo ? '#000' : p.bg),
+      },
+      gallery: (p.gallery && p.gallery.length ? p.gallery : [[2, 1], [2, 2], [1, 3], [1, 4], [2, 5]].map(([s, n]) => ({ img: '', span: s, ratio: n <= 2 ? '4/5' : '9/16', tall: n <= 2, fill: n === 5, label: `../projects/${p.slug}/gallery-${n}.png` }))).map(g => ({ label: '', video: '', bg: '#000', fit: 'contain', bgSize: 'contain', vscale: 1, ...g, height: gc === 4 && !g.natural ? `${Math.round((document.documentElement.clientWidth - 100) / 4 * 16 / 9)}px` : 'auto', align: 'start', ratio: gc === 4 && !g.natural ? 'auto' : g.ratio, span: gfit(g.span), bgImage: url(g.img) })),
+      goHome: this.nav('home'),
+      lanyardRef: this.lanyardRef,
+      mob: this.state.w < 700, desk: this.state.w >= 700, menuOpen: this.state.menuOpen && this.state.w < 700,
+      openMenu: (e) => { e.preventDefault(); this.setState({ menuOpen: true }); },
+      closeMenu: (e) => { e.preventDefault(); this.setState({ menuOpen: false }); },
+      menuWorks: (e) => { e.preventDefault(); this.setState({ menuOpen: false }); setTimeout(() => { const m = document.getElementById('works'); if (m) window.scrollTo({ top: m.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' }); }, 50); },
+      navY: (i >= 0 || this.state.navOn) ? '0' : '-100%',
+      toTop: (e) => { if (i >= 0) return this.nav('home')(e); e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      scrollWorks: (e) => { e.preventDefault(); const m = document.getElementById('works'); if (m) window.scrollTo({ top: m.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' }); },
+      goNext: this.nav(next.slug),
+      nextTitle: next.title,
+    };
+  }
+}
+</script>
+</body>
+</html>

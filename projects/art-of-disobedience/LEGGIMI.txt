@@ -1,0 +1,6 @@
+Cartella del progetto "art-of-disobedience".
+
+- cover.png  → immagine della card in home
+- hover.gif  → GIF che parte quando passi sopra la card (mettila qui con questo nome esatto)
+- hero.png   → immagine grande nella pagina progetto
+- gallery-N.png → immagini della galleria
