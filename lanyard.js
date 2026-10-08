@@ -749,6 +749,11 @@ export function mountLanyard(container, options = {}) {
     configureSimulation(sim, layout, anchorY - hangTop);
     sim.nodes[0].copy(sim.anchor);
     sim.previous[0].copy(sim.anchor);
+    const cb = settingsRef.current.onLayout;
+    if (cb) {
+      const c = new THREE.Vector3(anchorX - layout.width / 2, anchorY - (anchorY - hangTop) - layout.hangY - layout.height / 2, 0).project(camera);
+      cb((c.x * 0.5 + 0.5) * view.width, (-c.y * 0.5 + 0.5) * view.height, view);
+    }
   };
 
   apply = () => {
